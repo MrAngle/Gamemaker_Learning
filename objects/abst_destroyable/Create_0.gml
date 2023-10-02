@@ -1,0 +1,1 @@
+my_initialize_destroyable_object()

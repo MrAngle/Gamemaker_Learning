@@ -1,0 +1,40 @@
+### GameMaker ###
+*.win
+*.yyz
+*.exe
+*.app
+*.apk
+*.ipa
+*.html5
+*.x86
+*.x86_64
+*.rsm
+*.d3d
+*.dSYM
+*.bak
+*.win.*
+*.psp.*
+*.js
+*.gmez
+*.tmp
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Local cache and config
+[Oo]ptions/main.inherited.yy
+[Oo]ptions/main.win.yy
+[Yy]YP/
+asset_cache/
+
+# Build outputs
+[Oo]ptions/audio/*
+[Oo]ptions/graphics/*
+[Oo]ptions/ios/*
+[Oo]ptions/windows/*
+[Oo]ptions/html5/*
+[Oo]ptions/android/*
+[Oo]ptions/psp/*
+[Oo]ptions/macos/*
+[Oo]ptions/uwp/*
