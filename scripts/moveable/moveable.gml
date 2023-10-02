@@ -11,7 +11,7 @@ function my_INHERITENCE_movable(_obj)
 	_initMoveable(_obj, _received_params)
 
 	// APPLY 
-	my_apply_moveable_params(_obj);
+	//my_start_move_moveable_obj(_obj); 
 }
 
 
@@ -55,16 +55,13 @@ function my_is_moveable_object(_obj)
 function my_assign_movable_global_param(_object_movable, _global_param_movable) {
     if (_global_param_movable == undefined) return;
 
-	show_debug_message("ustawiam my_assign_movable_global_param")
-	show_debug_message(string(_global_param_movable))
+	//show_debug_message("ustawiam my_assign_movable_global_param")
+	//show_debug_message(string(_global_param_movable))
 
     if (variable_struct_exists(_global_param_movable, "my_is_moveable"))
         _object_movable.my_is_moveable = _global_param_movable.my_is_moveable;
-    if (variable_struct_exists(_global_param_movable, "my_current_direction")) {
-		show_debug_message(string(_global_param_movable.my_current_direction))
+    if (variable_struct_exists(_global_param_movable, "my_current_direction"))
 		_object_movable.my_current_direction = _global_param_movable.my_current_direction;
-	}
-        
     if (variable_struct_exists(_global_param_movable, "my_priv_speed"))
         _object_movable.my_priv_speed = _global_param_movable.my_priv_speed;
 	if (variable_struct_exists(_global_param_movable, "my_object_moveable_init_function"))
@@ -86,7 +83,7 @@ function my_is_movable_type_object(_object)
 	return _object.MY_IS_TYPE_MOVEABLE;
 }
 
-function my_apply_moveable_params(_object)
+function my_start_move_moveable_obj(_object)
 {
 	if(_object.MY_IS_TYPE_MOVEABLE == false) return;
 

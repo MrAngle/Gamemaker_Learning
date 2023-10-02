@@ -12,10 +12,10 @@ function add_params_for_new_obj(obj, _constr_params) {
 }
 
 /// @function get_params_from_map(obj)
-/// @param obj Obiekt, dla którego chcesz pobrać parametry.
+/// @param _obj Obiekt, dla którego chcesz pobrać parametry.
 /// @return    Mapa z parametrami dla określonego obiektu.
-function get_params_from_global_map(obj) {
-    var obj_name = object_get_name(obj);
+function get_params_from_global_map(_obj) {
+    var obj_name = object_get_name(_obj);
 	//show_debug_message("Probuje wyciagnac po MAPIE: " + string(obj_name))
 	show_debug_message("WYCIAGAM Z MAPY: " + obj_name)
     if (global._my_param_map[? obj_name]) {

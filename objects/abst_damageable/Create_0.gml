@@ -1,3 +1,2 @@
-
-
 my_INHERITENCE_movable(self)
+my_start_move_moveable_obj(self);
