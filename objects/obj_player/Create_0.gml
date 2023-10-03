@@ -1,3 +1,6 @@
+/* inheretence */
+my_INHERITENCE_directionangleable(self)
+
 function custom_moveable_init(_instance) {
     _instance.MY_IS_TYPE_MOVEABLE = true;
     _instance.my_is_moveable = true;
@@ -18,6 +21,6 @@ coins = 0;
 
 
 
-aiming = false;
-aim_angle = direction;
-depth = -9999;
+//aiming = false;
+//aim_angle = direction;
+//depth = -9999;

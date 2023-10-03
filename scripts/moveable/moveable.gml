@@ -2,13 +2,15 @@
 // // https://help.yoyogames.com/hc/en-us/articles/360005277377
 function my_INHERITENCE_movable(_obj)
 {
+	my_INHERITENCE_directionangleable(_obj);
+	
 	var _received_params = get_params_from_global_map(object_index);
 
 	if (is_undefined(_received_params)) {
 	    _received_params = {};
 	}
 
-	_initMoveable(_obj, _received_params)
+	_initMoveable(_obj, _received_params);
 
 	// APPLY 
 	//my_start_move_moveable_obj(_obj); 
@@ -92,35 +94,16 @@ function my_start_move_moveable_obj(_object)
 	{
 		_object.speed = my_get_speed(self);
 	}
-	_object.direction = my_calculate_direction_value(_object.my_current_direction);
+	//_object.direction = my_calculate_direction_value(_object.my_current_direction);
+	//if(my_get_aim_angle(self) != undefined) {
+		_object.direction = my_get_aim_angle(self);
+	//} else {
+	//	_object.direction = my_calculate_direction_value(_object.my_current_direction);
+	//}
+	
 	
 	my_adjust_obj_image_scale_and_angle(_object)
 }
-
-function my_calculate_direction_value(_direction_enum)
-{
-	switch(_direction_enum)
-    {
-        case MY_Direction.UP:
-            return 90;
-        case MY_Direction.DOWN:
-            return 270;
-        case MY_Direction.LEFT:
-            return 180;
-        case MY_Direction.RIGHT:
-            return 0;
-		case MY_Direction.UP_LEFT:
-            return 135;
-		case MY_Direction.UP_RIGHT:
-            return 45; 
-		case MY_Direction.DOWN_LEFT:
-            return 225;
-		case MY_Direction.DOWN_RIGHT:
-            return 315;
-    }
-	return 0;
-}
-
 
 
 function my_calculate_offset(_direction_enum, _invoker_width)
@@ -136,57 +119,15 @@ function my_calculate_offset(_direction_enum, _invoker_width)
 
 
 
-function my_adjust_obj_image_scale_and_angle(_object)
-{
-		// Resetowanie wartości
-    _object.image_xscale = 1;
-    _object.image_yscale = 1;
-    _object.image_angle = 0;
-	_object.image_speed = 1;
 
-    // Wizualne dostosowanie w oparciu o kierunek:
-    switch(_object.my_current_direction)
-    {
-        case MY_Direction.LEFT:
-            _object.image_xscale = -1; 
-            break;
 
-        case MY_Direction.RIGHT:
-			_object.image_xscale = 1; 
-            break;
 
-        case MY_Direction.UP:
-            //_object.image_angle = 180; 
-			_object.image_xscale = -1; 
-			_object.image_angle = -90;
-            break;
 
-        case MY_Direction.DOWN:
-            _object.image_angle = -90;
-            break;
 
-        case MY_Direction.UP_LEFT:
-            _object.image_angle = 135; 
-            break;
 
-        case MY_Direction.UP_RIGHT:
-            //_object.image_angle = -135;
-			_object.image_angle = 45; 
-            break;
 
-        case MY_Direction.DOWN_LEFT:
-			_object.image_angle = -135;
-            //_object.image_angle = 45; 
-            break;
 
-        case MY_Direction.DOWN_RIGHT:
-            _object.image_angle = -45; 
-            break;
 
-        default:
-            break;
-    }
-}
 
 
 

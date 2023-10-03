@@ -1,2 +1,2 @@
-my_INHERITENCE_movable(self)
+event_inherited()
 my_start_move_moveable_obj(self);

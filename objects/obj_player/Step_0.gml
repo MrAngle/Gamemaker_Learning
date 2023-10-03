@@ -90,30 +90,105 @@ else if (keyboard_check(vk_right))
 //    aiming = false;
 //}
 
+function closest_multiples_of_45(target) {
+    return round(target / 45) * 45;
+}
+
+function modified_angle_difference(angle1, angle2) {
+    var diff = (angle2 - angle1) mod 360;
+
+    if (diff > 180) {
+        diff -= 360;
+    }
+
+    if (diff < -180) {
+        diff += 360;
+    }
+
+    if (diff == -180) {
+        return 180;
+    }
+
+    return diff;
+}
 
 if (keyboard_check(vk_shift)) {
-    aiming = true;
+    my_STATE_aiming = true;
 
     var horz = 0;
     var vert = 0;
 
-    if (keyboard_check(vk_left)) horz -= 1;
-    if (keyboard_check(vk_right)) horz += 1;
-    if (keyboard_check(vk_down)) vert += 1;
-    if (keyboard_check(vk_up)) vert -= 1;
+    if (keyboard_check(vk_left)) horz -= 1; 
+    if (keyboard_check(vk_right)) horz += 1; 
+    if (keyboard_check(vk_down)) vert -= 1; // Zmieniamy znak dla strzałki w dół
+    if (keyboard_check(vk_up)) vert += 1;   // Zmieniamy znak dla strzałki w górę
 
-    // Jeśli jakikolwiek kierunek jest wciskany, aktualizuj aim_angle
+    // Odwracamy wartość vert, aby dostosować się do układu współrzędnych w GameMaker
+    vert = -vert;
+
     if (horz != 0 || vert != 0) {
-        var raw_angle = point_direction(0, 0, horz, vert);
+        var target_angle = point_direction(0, 0, horz, vert);
+        var closest_angle = closest_multiples_of_45(target_angle);
+        var diff_angle = modified_angle_difference(my_get_aim_angle(self), target_angle);
 
-        // Zamieniamy surowy kąt na jeden z 8 kierunków
-        var discrete_angle = round(raw_angle / 45) * 45;
-        aim_angle = discrete_angle % 360;
+        var rotation_speed = 4;
+
+        if (abs(modified_angle_difference(target_angle, closest_angle)) < 1) {
+            target_angle = closest_angle;
+        }
+
+        if (abs(diff_angle) < rotation_speed) {
+            my_set_aim_angle(self, target_angle);
+        } else {
+            my_set_aim_angle(self, my_get_aim_angle(self) + sign(diff_angle) * rotation_speed);
+        }
+
+        // Ogranicz aim_angle do zakresu 0-360
+        if (my_get_aim_angle(self) >= 360) {
+            my_set_aim_angle(self, my_get_aim_angle(self) - 360);
+        }
+        if (my_get_aim_angle(self) < 0) {
+            my_set_aim_angle(self, my_get_aim_angle(self) + 360);
+        }
     }
-
 } else {
-    aiming = false;
+    my_STATE_aiming = false;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+//if (keyboard_check(vk_shift)) {
+//    aiming = true;
+
+//    var horz = 0;
+//    var vert = 0;
+
+//    if (keyboard_check(vk_left)) horz -= 1;
+//    if (keyboard_check(vk_right)) horz += 1;
+//    if (keyboard_check(vk_down)) vert += 1;
+//    if (keyboard_check(vk_up)) vert -= 1;
+
+//    // Jeśli jakikolwiek kierunek jest wciskany, aktualizuj aim_angle
+//    if (horz != 0 || vert != 0) {
+//        var raw_angle = point_direction(0, 0, horz, vert);
+
+//        // Zamieniamy surowy kąt na jeden z 8 kierunków
+//        var discrete_angle = round(raw_angle / 45) * 45;
+//        aim_angle = discrete_angle % 360;
+//    }
+
+//} else {
+//    aiming = false;
+//}
 
 
 
