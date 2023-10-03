@@ -95,11 +95,11 @@ function my_start_move_moveable_obj(_object)
 		_object.speed = my_get_speed(self);
 	}
 	//_object.direction = my_calculate_direction_value(_object.my_current_direction);
-	if(my_get_aim_angle(self) != undefined) {
+	//if(my_get_aim_angle(self) != undefined) {
 		_object.direction = my_get_aim_angle(self);
-	} else {
-		_object.direction = my_calculate_direction_value(_object.my_current_direction);
-	}
+	//} else {
+	//	_object.direction = my_calculate_direction_value(_object.my_current_direction);
+	//}
 	
 	
 	my_adjust_obj_image_scale_and_angle(_object)
