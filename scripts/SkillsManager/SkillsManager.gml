@@ -7,6 +7,7 @@ function my_skill_invoke(_invoker_obj, _x, _y, _layer, _skill_obj, _opt_directio
 
 function my_skill_invoke_2(_invoker_obj, _x, _y, _layer, _skill_obj, _opt_direction, _additional_params) 
 {
+	//my_skill_invoke_3(_invoker_obj, _x, _y, _layer, _skill_obj, _opt_direction, 0, _additional_params)
 	var _invoker_width = sprite_get_width(_invoker_obj.sprite_index);
     var _invoker_height = sprite_get_height(_invoker_obj.sprite_index);
 	
@@ -27,6 +28,30 @@ function my_skill_invoke_2(_invoker_obj, _x, _y, _layer, _skill_obj, _opt_direct
 	instance_create_layer(_x + _offsetX, _y + _offsetY, _layer, _skill_obj);
 }
 
+
+
+function my_skill_invoke_3(_invoker_obj, _x, _y, _layer, _skill_obj, _opt_direction, _aim_angle, _additional_params) 
+{
+	var _invoker_width = sprite_get_width(_invoker_obj.sprite_index);
+    var _invoker_height = sprite_get_height(_invoker_obj.sprite_index);
+	
+	var _offsetX = 0;
+    var _offsetY = 0;
+    
+	var offsets = my_calculate_offset(_opt_direction, _invoker_width);
+	_offsetX += offsets[0];
+	_offsetY += offsets[1];
+	
+	var _constr_params = {};
+	_constr_params.my_current_direction = _opt_direction
+	_constr_params.my_priv_aim_angle = _aim_angle
+	
+	my_copy_parameters_to_from_struct(_constr_params, _additional_params);
+
+	add_params_for_new_obj(_skill_obj, _constr_params)
+	
+	instance_create_layer(_x + _offsetX, _y + _offsetY, _layer, _skill_obj);
+}
 
 
 

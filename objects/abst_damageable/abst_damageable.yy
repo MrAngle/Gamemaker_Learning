@@ -11,7 +11,10 @@
     "name": "Attacks",
     "path": "folders/Objects/Game/Skills/Attacks.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "abst_skill",
+    "path": "objects/abst_skill/abst_skill.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.0,
   "physicsDensity": 0.0,

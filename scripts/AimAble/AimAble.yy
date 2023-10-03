@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "SkillsManager",
+  "name": "AimAble",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "Skills",
-    "path": "folders/Objects/Game/Skills.yy",
+    "name": "Player",
+    "path": "folders/Objects/Game/Player.yy",
   },
 }
