@@ -32,8 +32,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "Sprite7071",
-    "path": "sprites/Sprite7071/Sprite7071.yy",
+    "name": "Sprite7072",
+    "path": "sprites/Sprite7072/Sprite7072.yy",
   },
   "spriteMaskId": null,
   "visible": true,
