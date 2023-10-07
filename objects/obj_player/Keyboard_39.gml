@@ -2,6 +2,8 @@
 // X so it moves right
 x += my_get_speed(self);
 
+
+if(!my_STATE_is_lock_direction) {
 // Walk to side sprite
 sprite_index = spr_player_walk_side;
 image_index += 0;
@@ -11,3 +13,5 @@ image_index += 0;
 // right again
 image_xscale = 1;
 image_yscale = 1;
+
+}

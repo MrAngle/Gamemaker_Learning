@@ -24,6 +24,7 @@
   "ResourceOrderSettings": [
     {"name":"obj_barrel_big","order":3,"path":"objects/obj_barrel_big/obj_barrel_big.yy",},
     {"name":"spr_sword_attack","order":5,"path":"sprites/spr_sword_attack/spr_sword_attack.yy",},
+    {"name":"PlayerScripts","order":2,"path":"scripts/PlayerScripts/PlayerScripts.yy",},
     {"name":"path_enemy_2","order":1,"path":"paths/path_enemy_2/path_enemy_2.yy",},
     {"name":"MockedMaskScripts","order":7,"path":"scripts/MockedMaskScripts/MockedMaskScripts.yy",},
     {"name":"snd_gate_iron_open","order":11,"path":"sounds/snd_gate_iron_open/snd_gate_iron_open.yy",},
@@ -35,6 +36,7 @@
     {"name":"snd_chest_locked","order":9,"path":"sounds/snd_chest_locked/snd_chest_locked.yy",},
     {"name":"spr_gate_wood_1","order":7,"path":"sprites/spr_gate_wood_1/spr_gate_wood_1.yy",},
     {"name":"spr_pillar_fallen","order":3,"path":"sprites/spr_pillar_fallen/spr_pillar_fallen.yy",},
+    {"name":"abs_player","order":3,"path":"objects/abs_player/abs_player.yy",},
     {"name":"spr_baddie_walk_up","order":3,"path":"sprites/spr_baddie_walk_up/spr_baddie_walk_up.yy",},
     {"name":"obj_menu_manager","order":2,"path":"objects/obj_menu_manager/obj_menu_manager.yy",},
     {"name":"spr_baddie_walk_down","order":1,"path":"sprites/spr_baddie_walk_down/spr_baddie_walk_down.yy",},
@@ -77,6 +79,7 @@
     {"name":"TEST_OBJECT","order":13,"path":"objects/TEST_OBJECT/TEST_OBJECT.yy",},
     {"name":"obj_pillar_whole","order":8,"path":"objects/obj_pillar_whole/obj_pillar_whole.yy",},
     {"name":"rm_level_2","order":1,"path":"rooms/rm_level_2/rm_level_2.yy",},
+    {"name":"specificMoveSprites","order":6,"path":"scripts/specificMoveSprites/specificMoveSprites.yy",},
     {"name":"obj_enemy_gargoyle_1","order":3,"path":"objects/obj_enemy_gargoyle_1/obj_enemy_gargoyle_1.yy",},
     {"name":"spr_player_defeated","order":6,"path":"sprites/spr_player_defeated/spr_player_defeated.yy",},
     {"name":"snd_torch","order":7,"path":"sounds/snd_torch/snd_torch.yy",},

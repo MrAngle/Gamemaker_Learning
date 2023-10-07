@@ -3,7 +3,7 @@ function custom_moveable_init(_instance) {
     _instance.MY_IS_TYPE_MOVEABLE = true;
     _instance.my_is_moveable = true;
     _instance.my_current_direction = MY_Direction.RIGHT;
-    _instance.my_priv_speed = 8;
+    _instance.my_priv_base_speed = 8;
 }
 
 // Create Event w obiekcie-dziecku (przed wywołaniem event_inherited()):

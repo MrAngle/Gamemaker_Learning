@@ -18,3 +18,6 @@ function my_set_max_health(_object, _value_to_set)
 	_object.my_current_health = _value_to_set
 	_object.my_max_health = _object.my_current_health
 }
+
+
+

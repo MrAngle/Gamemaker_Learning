@@ -1,0 +1,11 @@
+// // W wersji v2.3.0 zmieniono zasoby skryptu. Więcej informacji można znaleźć pod adresem
+// // https://help.yoyogames.com/hc/en-us/articles/360005277377
+
+
+//my_get_sprite_based_on_direction(_directionEnum) {
+
+	
+
+//sprite_index = spr_player_walk_side;
+
+//}

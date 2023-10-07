@@ -9,3 +9,5 @@ if (my_STATE_aiming) {
     draw_set_color(c_red);
     draw_line_width(x, y, aim_x, aim_y, 2);  // 2 to grubość linii; dostosuj według potrzeb
 }
+
+event_inherited();

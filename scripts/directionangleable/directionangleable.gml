@@ -54,6 +54,46 @@ function my_load_direction_arrow_gui(_invoker_obj)
 }
 
 
+function my_aim_calculate_aim_angle(_object)
+{
+	var horz = 0;
+    var vert = 0;
+
+    if (keyboard_check(vk_left)) horz -= 1; 
+    if (keyboard_check(vk_right)) horz += 1; 
+    if (keyboard_check(vk_down)) vert -= 1; // Zmieniamy znak dla strzałki w dół
+    if (keyboard_check(vk_up)) vert += 1;   // Zmieniamy znak dla strzałki w górę
+
+    // Odwracamy wartość vert, aby dostosować się do układu współrzędnych w GameMaker
+    vert = -vert;
+
+    if (horz != 0 || vert != 0) {
+        var target_angle = point_direction(0, 0, horz, vert);
+        //var closest_angle = closest_multiples_of_45(target_angle);
+        var diff_angle = modified_angle_difference(my_get_aim_angle(_object), target_angle);
+
+        var rotation_speed = 4;
+
+        //if (abs(modified_angle_difference(target_angle, closest_angle)) < 1) {
+        //    target_angle = closest_angle;
+        //}
+
+        if (abs(diff_angle) < rotation_speed) {
+            my_set_aim_angle(_object, target_angle);
+        } else {
+            my_set_aim_angle(_object, my_get_aim_angle(_object) + sign(diff_angle) * rotation_speed);
+        }
+
+        // Ogranicz aim_angle do zakresu 0-360
+        if (my_get_aim_angle(_object) >= 360) {
+            my_set_aim_angle(_object, my_get_aim_angle(_object) - 360);
+        }
+        if (my_get_aim_angle(_object) < 0) {
+            my_set_aim_angle(_object, my_get_aim_angle(_object) + 360);
+        }
+    }
+}
+
 
 function my_adjust_obj_image_scale_and_angle(_object)
 {
@@ -164,6 +204,24 @@ function my_calculate_direction_enum(_angle) {
     return -1; // Błąd, nieznany kierunek
 }
 
+
+function modified_angle_difference(angle1, angle2) {
+    var diff = (angle2 - angle1) mod 360;
+
+    if (diff > 180) {
+        diff -= 360;
+    }
+
+    if (diff < -180) {
+        diff += 360;
+    }
+
+    if (diff == -180) {
+        return 180;
+    }
+
+    return diff;
+}
 
 
 

@@ -5,7 +5,7 @@
   "eventList": [],
   "managed": true,
   "overriddenProperties": [
-    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"abst_spawner","path":"objects/abst_spawner/abst_spawner.yy",},"propertyId":{"name":"my_spawn_time","path":"objects/abst_spawner/abst_spawner.yy",},"value":"3",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"abst_spawner","path":"objects/abst_spawner/abst_spawner.yy",},"propertyId":{"name":"my_spawn_time","path":"objects/abst_spawner/abst_spawner.yy",},"value":"20",},
     {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"abst_spawner","path":"objects/abst_spawner/abst_spawner.yy",},"propertyId":{"name":"my_priv_spawn_counter","path":"objects/abst_spawner/abst_spawner.yy",},"value":"1",},
   ],
   "parent": {
