@@ -1,0 +1,1 @@
+my_TRIGGER_direction_change(self);

@@ -1,8 +1,8 @@
 function my_INHERITENCE_specific_move_sprites(_obj)
 {
-	_obj.my_current_direction = my_get_direction(self)
+	_obj.my_current_direction = my_get_direction(_obj)
 	
-	var _received_params = get_params_from_global_map(object_index);
+	var _received_params = get_params_from_global_map(_obj.object_index);
 
 	if (is_undefined(_received_params)) {
 	    _received_params = {};
@@ -18,12 +18,13 @@ function my_INHERITENCE_specific_move_sprites(_obj)
 
 
 function _initSpecificMoveSprites(_obj, _param_received_params) {
-    if(!my_object_has_field(_obj, "my_object_specific_sprites_init_function") || is_undefined(_obj.my_object_specific_sprites_init_function)) {
-        _obj.my_object_specific_sprites_init_function = my_CONSTRUCTOR_default_sprites_init;
-    }
+	my_CONSTRUCTOR_default_sprites_init(_obj);
+	if(my_object_has_field(_obj, "my_object_specific_sprites_init_function") && 
+		!is_undefined(_obj.my_object_specific_sprites_init_function)) {
+		_obj.my_object_specific_sprites_init_function(_obj);
+	}
 
-    _obj.my_object_specific_sprites_init_function(self);
-    my_assign_specific_sprites_global_param(self, _param_received_params);
+    my_assign_specific_sprites_global_param(_obj, _param_received_params);
 }
 
 
@@ -75,24 +76,20 @@ function my_assign_specific_sprites_global_param(_object_sprite, _global_param_s
 
 function my_CONSTRUCTOR_default_sprites_init(_instance) {
 
-    _instance.my_specific_move_sprites = undefined;
+    //_instance.my_object_specific_sprites_init_function = undefined;
 	
 	var _default_sprite = _instance.sprite_index;
 
-	_instance.my_sprite_MOVEABLE_UP = _default_sprite;
-	_instance.my_sprite_MOVEABLE_DOWN = _default_sprite;
-	_instance.my_sprite_MOVEABLE_LEFT = _default_sprite;
-	_instance.my_sprite_MOVEABLE_RIGHT = _default_sprite;
-	_instance.my_sprite_MOVEABLE_UP_LEFT = _default_sprite;
-	_instance.my_sprite_MOVEABLE_UP_RIGHT = _default_sprite;
-	_instance.my_sprite_MOVEABLE_DOWN_LEFT = _default_sprite;
-	_instance.my_sprite_MOVEABLE_DOWN_RIGHT = _default_sprite;
-	_instance.my_sprite_MOVEABLE_IDLE = _default_sprite;
+	_instance.my_sprite_MOVEABLE_UP = undefined;
+	_instance.my_sprite_MOVEABLE_DOWN = undefined;
+	_instance.my_sprite_MOVEABLE_LEFT = undefined;
+	_instance.my_sprite_MOVEABLE_RIGHT = undefined;
+	_instance.my_sprite_MOVEABLE_UP_LEFT = undefined;
+	_instance.my_sprite_MOVEABLE_UP_RIGHT = undefined;
+	_instance.my_sprite_MOVEABLE_DOWN_LEFT = undefined;
+	_instance.my_sprite_MOVEABLE_DOWN_RIGHT = undefined;
+	_instance.my_sprite_MOVEABLE_IDLE = undefined;
 }
-
-
-
-
 
 function my_adjust_diagonal_sprites(_object_sprite) {
     // Jeśli RIGHT jest ustawione, ale UP_RIGHT i DOWN_RIGHT nie są
@@ -169,4 +166,79 @@ function getCurrentDirectionSprite(_instance) {
         default:
             return spr_Player_Idle;  // Domyślny sprite
     }
+}
+
+//function my_update_LEFT_sprite(_obj) {
+//	//if(!my_STATE_is_lock_direction) {
+//		sprite_index = _obj.my_sprite_MOVEABLE_LEFT;
+//		image_index += 0;
+
+//		image_xscale = -1;
+//		image_yscale = 1;
+//	//}
+//}
+
+// Funkcja do aktualizacji sprite'a w kierunku w lewo
+function my_update_LEFT_sprite(_obj) {
+    _obj.sprite_index = _obj.my_sprite_MOVEABLE_LEFT;
+    //_obj.image_index += 0;
+    _obj.image_xscale = -1;
+    _obj.image_yscale = 1;
+}
+
+// Analogiczne funkcje dla innych kierunków
+function my_update_UP_sprite(_obj) {
+    _obj.sprite_index = _obj.my_sprite_MOVEABLE_UP;
+    //_obj.image_index += 0;
+    _obj.image_xscale = 1;
+    _obj.image_yscale = 1;
+}
+
+function my_update_DOWN_sprite(_obj) {
+    _obj.sprite_index = _obj.my_sprite_MOVEABLE_DOWN;
+    //_obj.image_index += 0;
+    _obj.image_xscale = 1;
+    _obj.image_yscale = 1;
+}
+
+function my_update_RIGHT_sprite(_obj) {
+    _obj.sprite_index = _obj.my_sprite_MOVEABLE_RIGHT;
+    //_obj.image_index += 0;
+    _obj.image_xscale = 1;
+    _obj.image_yscale = 1;
+}
+
+function my_update_UP_LEFT_sprite(_obj) {
+    _obj.sprite_index = _obj.my_sprite_MOVEABLE_UP_LEFT;
+    //_obj.image_index += 0;
+    _obj.image_xscale = -1;
+    _obj.image_yscale = 1;
+}
+
+function my_update_UP_RIGHT_sprite(_obj) {
+    _obj.sprite_index = _obj.my_sprite_MOVEABLE_UP_RIGHT;
+    //_obj.image_index += 0;
+    _obj.image_xscale = 1;
+    _obj.image_yscale = 1;
+}
+
+function my_update_DOWN_LEFT_sprite(_obj) {
+    _obj.sprite_index = _obj.my_sprite_MOVEABLE_DOWN_LEFT;
+    //_obj.image_index += 0;
+    _obj.image_xscale = -1;
+    _obj.image_yscale = 1;
+}
+
+function my_update_DOWN_RIGHT_sprite(_obj) {
+    _obj.sprite_index = _obj.my_sprite_MOVEABLE_DOWN_RIGHT;
+    //_obj.image_index += 0;
+    _obj.image_xscale = 1;
+    _obj.image_yscale = 1;
+}
+
+function my_update_IDLE_sprite(_obj) {
+    _obj.sprite_index = _obj.my_sprite_MOVEABLE_IDLE;
+    //_obj.image_index += 0;
+    //_obj.image_xscale = 1;
+    //_obj.image_yscale = 1;
 }

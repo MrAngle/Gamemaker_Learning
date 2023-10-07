@@ -5,8 +5,15 @@ function custom_moveable_init(_instance) {
     _instance.my_priv_base_speed = 0.5;
 }
 
-// Create Event w obiekcie-dziecku (przed wywołaniem event_inherited()):
+function custom_sprites_init(_instance) {
+	_instance.my_sprite_MOVEABLE_UP = Sprite7072;
+    _instance.my_sprite_MOVEABLE_DOWN = Sprite7072;
+    _instance.my_sprite_MOVEABLE_LEFT = Sprite7072;
+    _instance.my_sprite_MOVEABLE_RIGHT = Sprite7072;
+	_instance.my_sprite_MOVEABLE_IDLE = Sprite7072;
+}
 
+my_object_specific_sprites_init_function = custom_sprites_init;
 my_object_moveable_init_function = custom_moveable_init;
 
 event_inherited();

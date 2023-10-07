@@ -3,6 +3,7 @@
 function my_INHERITENCE_movable(_obj)
 {
 	my_INHERITENCE_directionangleable(_obj);
+	my_INHERITENCE_specific_move_sprites(_obj);
 	
 	var _received_params = get_params_from_global_map(object_index);
 
@@ -97,6 +98,9 @@ function my_assign_movable_global_param(_object_movable, _global_param_movable) 
         
 	if (variable_struct_exists(_global_param_movable, "my_priv_temp_speed"))
         _object_movable.my_priv_temp_speed = _global_param_movable.my_priv_temp_speed;
+		
+	if (variable_struct_exists(_global_param_movable, "my_trigger_direction_change"))
+        _object_movable.my_trigger_direction_change = _global_param_movable.my_trigger_direction_change;
 	if (variable_struct_exists(_global_param_movable, "my_object_moveable_init_function"))
         _object_movable.my_object_moveable_init_function = _global_param_movable.my_object_moveable_init_function;
 }
@@ -106,6 +110,8 @@ function my_CONSTRUCTOR_default_moveable_init(_instance) {
     _instance.MY_IS_TYPE_MOVEABLE = true;
     _instance.my_is_moveable = true;
     _instance.my_current_direction = MY_Direction.RIGHT;
+    _instance.my_trigger_direction_change = true;
+    _instance.my_STATE_is_lock_direction = false;
 	_instance.my_priv_base_speed = 0; // base character speed
     //_instance.my_priv_current_speed = my_base_speed; // modified character speed
 	
@@ -165,125 +171,123 @@ function my_calculate_offset(_direction_enum, _invoker_width)
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function DEPRECATED_my_calculate_offsets_old()
-{
-	var offsetDiagonal = _invoker_width / sqrt(2);
-
-	switch(_opt_direction) 
-	{
-	    case MY_Direction.UP:
-	        offsetY = -_invoker_height;
-	        break;
-
-	    case MY_Direction.DOWN:
-	        offsetY = _invoker_height;
-	        break;
-
-	    case MY_Direction.LEFT:
-	        offsetX = -_invoker_width;
-	        break;
-
-	    case MY_Direction.RIGHT:
-	        offsetX = _invoker_width;
-	        break;
-
-	    case MY_Direction.DOWN_LEFT:
-	        offsetX = -offsetDiagonal;
-	        offsetY = offsetDiagonal;
-	        break;
-
-	    case MY_Direction.DOWN_RIGHT:
-	        offsetX = offsetDiagonal;
-	        offsetY = offsetDiagonal;
-	        break;
-
-	    case MY_Direction.UP_LEFT:
-	        offsetX = -offsetDiagonal;
-	        offsetY = -offsetDiagonal;
-	        break;
-
-	    case MY_Direction.UP_RIGHT:
-	        offsetX = offsetDiagonal;
-	        offsetY = -offsetDiagonal;
-	        break;
-
-	    default:
-	        break;
-	}
-
+function my_TRIGGER_direction_change(_obj) {
+	_obj.my_trigger_direction_change = true;
 }
 
 
-	// // Oblicz image_xscale i image_yscale na podstawie kierunku
+// Funkcja do aktualizacji sprite'a w zależności od wciśniętych klawiszy
+function my_calculate_direction_and_sprite(_obj) {
+	
+		show_debug_message("my_get_speed " + string(my_get_speed(_obj)))
+	show_debug_message("_obj " + string(_obj.speed))
+	if(_obj.speed < 0.1 && my_get_speed(_obj) < 0.1) {
+		my_update_IDLE_sprite(_obj);
+		_obj.image_index += 0;
+		return;
+	}
+	
+    // Sprawdzenie wciśniętych klawiszy
+    if (!_obj.my_STATE_is_lock_direction && _obj.my_trigger_direction_change) {
+        if (keyboard_check(vk_up)) {
+            if (keyboard_check(vk_left)) {
+                _obj.my_current_direction = MY_Direction.UP_LEFT;
+                my_update_UP_LEFT_sprite(_obj);
+            } else if (keyboard_check(vk_right)) {
+                _obj.my_current_direction = MY_Direction.UP_RIGHT;
+                my_update_UP_RIGHT_sprite(_obj);
+            } else {
+                _obj.my_current_direction = MY_Direction.UP;
+                my_update_UP_sprite(_obj);
+            }
+        } else if (keyboard_check(vk_down)) {
+            if (keyboard_check(vk_left)) {
+                _obj.my_current_direction = MY_Direction.DOWN_LEFT;
+                my_update_DOWN_LEFT_sprite(_obj);
+            } else if (keyboard_check(vk_right)) {
+                _obj.my_current_direction = MY_Direction.DOWN_RIGHT;
+                my_update_DOWN_RIGHT_sprite(_obj);
+            } else {
+                _obj.my_current_direction = MY_Direction.DOWN;
+                my_update_DOWN_sprite(_obj);
+            }
+        } else if (keyboard_check(vk_left)) {
+            _obj.my_current_direction = MY_Direction.LEFT;
+            my_update_LEFT_sprite(_obj);
+        } else if (keyboard_check(vk_right)) {
+            _obj.my_current_direction = MY_Direction.RIGHT;
+            my_update_RIGHT_sprite(_obj);
+        }
+    }
+	
+	_obj.my_trigger_direction_change = false;
+	_obj.image_index += 0;
+}
 
 
-    //var _direction = _object.direction;
-    //_object.image_xscale = 1; // Domyślna skala w poziomie (nieodwrócona)
-    //_object.image_yscale = 1; // Domyślna skala w pionie (nieodwrócona)
+//function my_update_sprite(_obj) {
+//	//if(!_obj.my_STATE_is_lock_direction) {
+//		if (keyboard_check(vk_up)) 
+//		{
+//		    if (keyboard_check(vk_left)) 
+//		    {
+//		        my_current_direction = MY_Direction.UP_LEFT;
+//				my_update_LEFT_sprite(_obj);
+//		    }
+//		    else if (keyboard_check(vk_right))
+//		    {
+//		        my_current_direction = MY_Direction.UP_RIGHT;
+//		    }
+//		    else 
+//		    {
+//		        my_current_direction = MY_Direction.UP;
+//		    }
+//		}
+//		else if (keyboard_check(vk_down)) 
+//		{
+//		    if (keyboard_check(vk_left)) 
+//		    {
+//		        my_current_direction = MY_Direction.DOWN_LEFT;
+//		    }
+//		    else if (keyboard_check(vk_right))
+//		    {
+//		        my_current_direction = MY_Direction.DOWN_RIGHT;
+//		    }
+//		    else 
+//		    {
+//		        my_current_direction = MY_Direction.DOWN;
+//		    }
+//		}
+//		else if (keyboard_check(vk_left))
+//		{
+//		    my_current_direction = MY_Direction.LEFT;
+//		}
+//		else if (keyboard_check(vk_right))
+//		{
+//		    my_current_direction = MY_Direction.RIGHT;
+//		}
+//	//}
 
-    //if (_direction == 90)
-    //{
-    //    // Góra
-    //    _object.image_yscale = -1;
-    //}
-    //else if (_direction == 270)
-    //{
-    //    // Dół
-    //    _object.image_yscale = 1;
-    //}
-    //else if (_direction == 180)
-    //{
-    //    // Lewo
-    //    _object.image_xscale = -1;
-    //}
-    //else if (_direction == 0)
-    //{
-    //    // Prawo
-    //    _object.image_xscale = 1;
-    //}
-    //else if (_direction == 135)
-    //{
-    //    // Skos w lewo-góra
-    //    _object.image_yscale = -1;
-    //    _object.image_xscale = -1;
-    //}
-    //else if (_direction == 225)
-    //{
-    //    // Skos w lewo-dół
-    //    _object.image_yscale = 1;
-    //    _object.image_xscale = -1;
-    //}
-    //else if (_direction == 315)
-    //{
-    //    // Skos w prawo-dół
-    //    _object.image_yscale = 1;
-    //    _object.image_xscale = 1;
-    //}
-    //else if (_direction == 45)
-    //{
-    //    // Skos w prawo-góra
-    //    _object.image_yscale = -1;
-    //    _object.image_xscale = 1;
-    //}
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
