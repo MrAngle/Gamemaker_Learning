@@ -1,0 +1,1 @@
+my_use_mocked_collision_mask(self);

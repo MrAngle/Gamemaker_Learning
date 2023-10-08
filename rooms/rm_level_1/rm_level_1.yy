@@ -303,6 +303,7 @@
     {"name":"inst_BA6BA2C","path":"rooms/rm_level_1/rm_level_1.yy",},
     {"name":"inst_5EA40D37","path":"rooms/rm_level_1/rm_level_1.yy",},
     {"name":"inst_511442BE","path":"rooms/rm_level_1/rm_level_1.yy",},
+    {"name":"inst_52DABF68","path":"rooms/rm_level_1/rm_level_1.yy",},
   ],
   "isDnd": false,
   "layers": [
@@ -664,6 +665,7 @@
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_BA6BA2C","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"spawner_enemy_bat_1","path":"objects/spawner_enemy_bat_1/spawner_enemy_bat_1.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":176.0,"y":1568.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_5EA40D37","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"spawner_enemy_bat_1","path":"objects/spawner_enemy_bat_1/spawner_enemy_bat_1.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":288.0,"y":688.0,},
         {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_511442BE","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"obj_enemy_gargoyle_1","path":"objects/obj_enemy_gargoyle_1/obj_enemy_gargoyle_1.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":272.0,"y":1392.0,},
+        {"resourceType":"GMRInstance","resourceVersion":"1.0","name":"inst_52DABF68","colour":4294967295,"frozen":false,"hasCreationCode":false,"ignore":false,"imageIndex":0,"imageSpeed":1.0,"inheritCode":false,"inheritedItemId":null,"inheritItemSettings":false,"isDnd":false,"objectId":{"name":"spawner_enemy_zombie_1","path":"objects/spawner_enemy_zombie_1/spawner_enemy_zombie_1.yy",},"properties":[],"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"x":688.0,"y":1120.0,},
       ],"layers":[],"properties":[],"userdefinedDepth":false,"visible":true,},
     {"resourceType":"GMRLayer","resourceVersion":"1.0","name":"Visuals_Below_Instances","depth":-11400,"effectEnabled":true,"effectType":null,"gridX":32,"gridY":32,"hierarchyFrozen":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"inheritSubLayers":true,"inheritVisibility":true,"layers":[
         {"resourceType":"GMRAssetLayer","resourceVersion":"1.0","name":"Visual_Assets","assets":[

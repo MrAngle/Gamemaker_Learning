@@ -179,8 +179,8 @@ function my_TRIGGER_direction_change(_obj) {
 // Funkcja do aktualizacji sprite'a w zależności od wciśniętych klawiszy
 function my_calculate_direction_and_sprite(_obj) {
 	
-		show_debug_message("my_get_speed " + string(my_get_speed(_obj)))
-	show_debug_message("_obj " + string(_obj.speed))
+	//	show_debug_message("my_get_speed " + string(my_get_speed(_obj)))
+	//show_debug_message("_obj " + string(_obj.speed))
 	if(_obj.speed < 0.1 && my_get_speed(_obj) < 0.1) {
 		my_update_IDLE_sprite(_obj);
 		_obj.image_index += 0;
@@ -223,61 +223,6 @@ function my_calculate_direction_and_sprite(_obj) {
 	_obj.my_trigger_direction_change = false;
 	_obj.image_index += 0;
 }
-
-
-//function my_update_sprite(_obj) {
-//	//if(!_obj.my_STATE_is_lock_direction) {
-//		if (keyboard_check(vk_up)) 
-//		{
-//		    if (keyboard_check(vk_left)) 
-//		    {
-//		        my_current_direction = MY_Direction.UP_LEFT;
-//				my_update_LEFT_sprite(_obj);
-//		    }
-//		    else if (keyboard_check(vk_right))
-//		    {
-//		        my_current_direction = MY_Direction.UP_RIGHT;
-//		    }
-//		    else 
-//		    {
-//		        my_current_direction = MY_Direction.UP;
-//		    }
-//		}
-//		else if (keyboard_check(vk_down)) 
-//		{
-//		    if (keyboard_check(vk_left)) 
-//		    {
-//		        my_current_direction = MY_Direction.DOWN_LEFT;
-//		    }
-//		    else if (keyboard_check(vk_right))
-//		    {
-//		        my_current_direction = MY_Direction.DOWN_RIGHT;
-//		    }
-//		    else 
-//		    {
-//		        my_current_direction = MY_Direction.DOWN;
-//		    }
-//		}
-//		else if (keyboard_check(vk_left))
-//		{
-//		    my_current_direction = MY_Direction.LEFT;
-//		}
-//		else if (keyboard_check(vk_right))
-//		{
-//		    my_current_direction = MY_Direction.RIGHT;
-//		}
-//	//}
-
-//}
-
-
-
-
-
-
-
-
-
 
 
 
