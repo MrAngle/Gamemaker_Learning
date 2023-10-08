@@ -1,5 +1,5 @@
 /* inheretence */
-my_INHERITENCE_directionangleable(self)
+my_INHERITENCE_directionangleable(object_index)
 //my_INHERITENCE_specific_move_sprites(self)
 
 
@@ -27,9 +27,9 @@ my_object_specific_sprites_init_function = custom_sprites_init;
 event_inherited();
 
 // INIT
-my_GLOBAL_add_player(self)
-my_set_max_health(self, 1000);
-my_load_direction_arrow_gui(self);
+my_GLOBAL_add_player(object_index)
+my_set_max_health(object_index, 1000);
+my_load_direction_arrow_gui(object_index);
 
 // Initialize coins value at 0
 coins = 0;

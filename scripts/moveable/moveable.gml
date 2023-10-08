@@ -29,51 +29,6 @@ function _initMoveable(_obj, _param_received_params)
 	my_assign_movable_global_param(_obj, _param_received_params);
 }
 
-function my_get_direction(_obj)
-{
-	if (!my_is_moveable_object(_obj)) return MY_Direction.RIGHT;
-	return _obj.my_current_direction;
-}
-
-function my_set_direction(_obj, _value)
-{
-	if (!my_object_has_field(_obj, "my_current_direction")) {
-		_obj.my_current_direction = MY_Direction.RIGHT;
-	} else {
-		_obj.my_current_direction = _value;
-	}
-}
-
-//function my_get_speed(_obj) {
-//    var _current_speed = _obj.my_priv_base_speed;
-//    for (var i = 0; i < ds_list_size(_obj.my_priv_speed_modifiers); i++) {
-//        var _mod = _obj.my_priv_speed_modifiers[| i];
-//        _current_speed *= _mod[? "value"];
-//    }
-//    return _current_speed;
-//}
-
-function my_get_speed(_obj) {
-    var _current_speed = _obj.my_priv_base_speed;
-	var keys = ds_map_keys_to_array(_obj.my_priv_speed_modifiers);
-	//ds_map_keys(_obj.my_priv_speed_modifiers, keys);
-    
-	for (var i = 0; i < array_length(keys); i++) {
-	    var key = keys[i];
-	    var modifier = _obj.my_priv_speed_modifiers[? key];
-	    _current_speed *= modifier[? "value"];
-	}
-    
-    //ds_list_destroy(keys);  // pamiętaj o zwolnieniu zasobów!
-    return _current_speed;
-}
-
-
-function my_is_moveable_object(_obj)
-{
-	if (!my_object_has_field_and_is_true(_obj, "my_is_moveable")) return false;
-	return _obj.my_is_moveable;
-}
 
 
 function my_assign_movable_global_param(_object_movable, _global_param_movable) {
@@ -92,7 +47,7 @@ function my_assign_movable_global_param(_object_movable, _global_param_movable) 
         _object_movable.my_priv_base_speed = _global_param_movable.my_priv_base_speed;
 	if (variable_struct_exists(_global_param_movable, "my_priv_speed_modifiers")) {
 		
-		show_debug_message("USTAWIAM my_priv_speed_modifiers")
+		//show_debug_message("USTAWIAM my_priv_speed_modifiers")
 		_object_movable.my_priv_speed_modifiers = _global_param_movable.my_priv_speed_modifiers;
 	}
         
@@ -115,11 +70,51 @@ function my_CONSTRUCTOR_default_moveable_init(_instance) {
 	_instance.my_priv_base_speed = 0; // base character speed
     //_instance.my_priv_current_speed = my_base_speed; // modified character speed
 	
-	show_debug_message("USTAWIAM my_priv_speed_modifiers")
+	//show_debug_message("USTAWIAM my_priv_speed_modifiers")
     _instance.my_priv_speed_modifiers = ds_map_create();
     //_instance.my_priv_temp_speed = 1; // tmp character speed
     //_instance.my_object_moveable_init_function = undefined;
 	
+}
+
+
+
+function my_get_direction(_obj)
+{
+	if (!my_is_moveable_object(_obj)) return MY_Direction.RIGHT;
+	return _obj.my_current_direction;
+}
+
+function my_set_direction(_obj, _value)
+{
+	if (!my_object_has_field(_obj, "my_current_direction")) {
+		_obj.my_current_direction = MY_Direction.RIGHT;
+	} else {
+		_obj.my_current_direction = _value;
+	}
+}
+
+
+function my_get_speed(_obj) {
+    var _current_speed = _obj.my_priv_base_speed;
+	var keys = ds_map_keys_to_array(_obj.my_priv_speed_modifiers);
+	//ds_map_keys(_obj.my_priv_speed_modifiers, keys);
+    
+	for (var i = 0; i < array_length(keys); i++) {
+	    var key = keys[i];
+	    var modifier = _obj.my_priv_speed_modifiers[? key];
+	    _current_speed *= modifier[? "value"];
+	}
+    
+    //ds_list_destroy(keys);  // pamiętaj o zwolnieniu zasobów!
+    return _current_speed;
+}
+
+
+function my_is_moveable_object(_obj)
+{
+	if (!my_object_has_field_and_is_true(_obj, "my_is_moveable")) return false;
+	return _obj.my_is_moveable;
 }
 
 

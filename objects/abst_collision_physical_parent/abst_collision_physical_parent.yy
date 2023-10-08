@@ -1,15 +1,18 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "abst_",
+  "name": "abst_collision_physical_parent",
   "eventList": [],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Skills",
-    "path": "folders/Objects/Game/Skills.yy",
+    "name": "Collision",
+    "path": "folders/Objects/Collision.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "abst_collision_super_parent",
+    "path": "objects/abst_collision_super_parent/abst_collision_super_parent.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
@@ -23,7 +26,9 @@
   "physicsShape": 1,
   "physicsShapePoints": [],
   "physicsStartAwake": true,
-  "properties": [],
+  "properties": [
+    {"resourceType":"GMObjectProperty","resourceVersion":"1.0","name":"my_base_mass","filters":[],"listItems":[],"multiselect":false,"rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"value":"999","varType":1,},
+  ],
   "solid": false,
   "spriteId": null,
   "spriteMaskId": null,

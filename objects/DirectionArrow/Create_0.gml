@@ -9,6 +9,8 @@
 
 //my_object_moveable_init_function = custom_moveable_init;
 
-my_INHERITENCE_movable(self)
-my_INHERITENCE_attachment(self);
+//my_INHERITENCE_movable(object_index)
+my_INHERITENCE_attachment(object_index);
+my_current_direction = MY_Direction.RIGHT;
+//my_assign_movable_global_param(self, self.my_attach_to_obj)
 //my_start_move_moveable_obj(self);

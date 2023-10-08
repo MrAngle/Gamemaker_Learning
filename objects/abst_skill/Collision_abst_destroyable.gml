@@ -1,0 +1,1 @@
+self.my_skill_effects_function(other);

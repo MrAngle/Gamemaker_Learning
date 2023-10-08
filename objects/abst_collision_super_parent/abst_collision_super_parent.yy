@@ -1,13 +1,13 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "obj_collision_parent",
+  "name": "abst_collision_super_parent",
   "eventList": [],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
-    "name": "Level",
-    "path": "folders/Objects/Level.yy",
+    "name": "Collision",
+    "path": "folders/Objects/Collision.yy",
   },
   "parentObjectId": null,
   "persistent": false,
