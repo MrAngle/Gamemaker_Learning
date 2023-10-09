@@ -37,6 +37,11 @@ function my_assign_skill_global_param(_object_skill, _global_param_skill) {
 }
 
 function my_CONSTRUCTOR_default_skill_init(_instance) {
-    _instance.my_skill_type = MY_SKILL_TYPE.WIND;
+    _instance.my_skill_type = [MY_SKILL_TYPE.WIND];
     _instance.my_skill_effects_function = function(_affected_object) {};
+}
+
+function my_AddSkillType(instance, skillType) {
+    var currentIndex = array_length(instance.my_skill_type);
+    instance.my_skill_type[currentIndex] = skillType;
 }

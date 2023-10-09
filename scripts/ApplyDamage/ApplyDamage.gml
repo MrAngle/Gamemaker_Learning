@@ -14,6 +14,7 @@ function my_apply_damage(_obj, _damage) {
 	with (_obj) {
 			//show_debug_message(string(id) + " ZADANO: " + string(_damage));
 		_obj.my_current_health = _obj.my_current_health - _damage;
+		return _damage;
 	}
 }
 
