@@ -64,8 +64,8 @@ function my_ManageSkillAction(_skill_obj, _target_obj, _skill_action_struct) {
 			_skill_action_struct.function_to_execute(_skill_obj, _target_obj);
 			break;
 	    case SKILL_PHASE.DAMAGE:
-	        _skill_obj.damage_dealt += _skill_action_struct.function_to_execute(_skill_obj, _target_obj);
-	        break;
+	        _skill_obj.damage_dealt_per_activation += _skill_action_struct.function_to_execute(_skill_obj, _target_obj);
+			break;
 
 	    case SKILL_PHASE.OTHER_EFFECTS:
 	    case SKILL_PHASE.BUFF:

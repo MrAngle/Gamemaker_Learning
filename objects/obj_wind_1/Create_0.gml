@@ -14,4 +14,4 @@ event_inherited();
 self.my_damage = floor(random_range(self.my_min_damage, self.my_max_damage + 1));
 
 
-alarm[0] = 1;  // Ustawienie alarmu na 1 klatkę
+//alarm[0] = 1;  // Ustawienie alarmu na 1 klatkę

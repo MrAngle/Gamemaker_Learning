@@ -37,13 +37,16 @@ function my_assign_skill_sequencer_global_param(_object_skill_sequencer, _global
 
 function my_CONSTRUCTOR_default_skill_sequencer_init(_instance) {
     _instance.my_skill_execution_sequence = ds_list_create(); // array of SkillActions
-    _instance.damage_dealt = 0; // when -1 it means nothing
+    _instance.damage_dealt = 0; // sum
+    _instance.damage_dealt_per_activation = 0; // sum
 }
 
 
 
 function my_ExecuteAllSkillActions(_skill_obj, _target_obj) {
-    my_SortSkillList(_skill_obj.my_skill_execution_sequence); // upewnij się, że umiejętności są posortowane
+    //my_SortSkillList(_skill_obj.my_skill_execution_sequence);
+	
+	
     
     var size = ds_list_size(_skill_obj.my_skill_execution_sequence);
     for (var i = 0; i < size; i++) {
@@ -51,6 +54,11 @@ function my_ExecuteAllSkillActions(_skill_obj, _target_obj) {
 		
 		my_ManageSkillAction(_skill_obj, _target_obj, _skill_action_struct)
     }
+	
+	_skill_obj.damage_dealt += _skill_obj.damage_dealt_per_activation;
+	_skill_obj.damage_dealt_per_activation = 0;
+	
+	//ds_list_clear(_skill_obj.my_skill_execution_sequence);
 }
 
 

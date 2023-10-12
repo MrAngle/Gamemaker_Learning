@@ -1,1 +1,2 @@
 my_initialize_destroyable_object()
+my_INHERITENCE_movable(self);

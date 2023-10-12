@@ -1,4 +1,6 @@
 // Inicjalizacja globalnej mapy
+global.MY_ROOM_SPEED = room_speed;
+
 global._my_param_map = ds_map_create();
 
 /// @function add_params_to_map(obj, params)

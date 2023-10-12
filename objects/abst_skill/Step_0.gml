@@ -1,0 +1,1 @@
+my_PROCESS_hitTimerCleaner(self);

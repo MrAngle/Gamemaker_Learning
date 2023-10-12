@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "destroyableParameters",
+  "name": "DestroyableScripts",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

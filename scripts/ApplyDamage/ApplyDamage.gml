@@ -3,7 +3,7 @@
 function my_check_if_dead(_obj) {
     with (_obj) {
         if (_obj.my_current_health < 1) {
-            instance_destroy();
+            alarm[0] = 1; // to be able finish related processes
         } else {
             // Pozostały kod funkcji
         }

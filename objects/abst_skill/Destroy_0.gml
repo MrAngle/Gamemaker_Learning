@@ -1,1 +1,2 @@
 my_DESTRUCTOR_skill_sequencer(self);
+my_DESTRUCTOR_skill_hit_timer(self);
