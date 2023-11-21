@@ -1,0 +1,4 @@
+enum ModificatorTypeMinor {
+	DEBUFF,
+	BUFF
+}

@@ -8,6 +8,7 @@ enum SKILL_PHASE { // default order
 	BUFF,
 	DEBUFF,
     AFTEREFFECT,      // Efekty uboczne po użyciu umiejętności (np. podpalenie)
+    PUSH,      // Efekty uboczne po użyciu umiejętności (np. podpalenie)
     TARGET_REACT_ANIMATION, 
     SUM_UP_TARGET_STATE,
     COMPLETION        // Zakończenie działania umiejętności (czyszczenie wszystkich tymczasowych efektów, resetowanie zmiennych itp.)
@@ -72,7 +73,9 @@ function my_ManageSkillAction(_skill_obj, _target_obj, _skill_action_struct) {
 	    case SKILL_PHASE.DEBUFF:
 	    case SKILL_PHASE.AFTEREFFECT:
 	    case SKILL_PHASE.TARGET_REACT_ANIMATION:
+		case SKILL_PHASE.PUSH: 
 			_skill_action_struct.function_to_execute(_skill_obj, _target_obj);
+			
 	    case SKILL_PHASE.SUM_UP_TARGET_STATE:
 	    case SKILL_PHASE.COMPLETION:
 			_skill_action_struct.function_to_execute(_skill_obj, _target_obj);

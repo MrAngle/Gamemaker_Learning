@@ -11,7 +11,9 @@ my_object_moveable_init_function = custom_moveable_init;
 
 event_inherited();
 
-self.my_damage = floor(random_range(self.my_min_damage, self.my_max_damage + 1));
+self.hit_time_interval = 999;
 
+self.my_damage = floor(random_range(self.my_min_damage, self.my_max_damage + 1));
+my_DEFAULT_simple_push_action(self);
 
 //alarm[0] = 1;  // Ustawienie alarmu na 1 klatkę

@@ -23,14 +23,3 @@ function my_run_hit_animation(_object, _health, _damage){
 	_object.image_alpha = ($FF0000FF >> 24) / $ff;
 }
 
-//var instanceId = argument0
-
-
-
-
-
-//function ApplyDamage() constructor {
-//    my_apply_damage = function(id) {
-//        // Tutaj umieść kod funkcji
-//    };
-//}
