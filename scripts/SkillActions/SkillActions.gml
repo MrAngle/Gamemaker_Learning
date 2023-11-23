@@ -75,6 +75,7 @@ function my_ManageSkillAction(_skill_obj, _target_obj, _skill_action_struct) {
 	    case SKILL_PHASE.TARGET_REACT_ANIMATION:
 		case SKILL_PHASE.PUSH: 
 			_skill_action_struct.function_to_execute(_skill_obj, _target_obj);
+			break;
 			
 	    case SKILL_PHASE.SUM_UP_TARGET_STATE:
 	    case SKILL_PHASE.COMPLETION:

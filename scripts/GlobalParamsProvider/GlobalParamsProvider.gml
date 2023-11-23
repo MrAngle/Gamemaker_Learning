@@ -1,5 +1,7 @@
 // Inicjalizacja globalnej mapy
 global.MY_ROOM_SPEED = room_speed;
+global.MY_EMPTY_FUNCTION = function() {};
+global.MY_EMPTY_FUNCTION_WITH_2_PARAMS = function(_obj, _source) {};
 
 global._my_param_map = ds_map_create();
 
@@ -9,7 +11,7 @@ global._my_param_map = ds_map_create();
 /// @description Dodaje parametry do globalnej mapy dla określonego obiektu.
 function add_params_for_new_obj(obj, _constr_params) {
     var obj_name = object_get_name(obj);
-	show_debug_message("DODAJE DO MAPY: " + obj_name)
+	//show_debug_message("DODAJE DO MAPY: " + obj_name)
     global._my_param_map[? obj_name] = _constr_params;
 }
 
@@ -19,13 +21,13 @@ function add_params_for_new_obj(obj, _constr_params) {
 function get_params_from_global_map(_obj) {
     var obj_name = object_get_name(_obj);
 	//show_debug_message("Probuje wyciagnac po MAPIE: " + string(obj_name))
-	show_debug_message("WYCIAGAM Z MAPY: " + obj_name)
+	//show_debug_message("WYCIAGAM Z MAPY: " + obj_name)
     if (global._my_param_map[? obj_name]) {
         var result = global._my_param_map[? obj_name];
         //ds_map_delete(global._my_param_map, obj_name);  // usuwa parametry po ich użyciu
         return result;
     } else {
-		show_debug_message("NIE MA ELEMENTU W MAPIE")
+		//show_debug_message("NIE MA ELEMENTU W MAPIE")
         return undefined;
     }
 }

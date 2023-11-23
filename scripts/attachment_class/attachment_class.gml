@@ -34,11 +34,11 @@ function my_attach_to_obj_with_offsets(_obj, _x_offset, _y_offset) {
 
 	//if (!instance_exists(_obj.my_attach_to_obj)) return
 	
-	show_debug_message("my_attach_init x: " + string(_obj.my_attach_to_obj.x))
+	//show_debug_message("my_attach_init x: " + string(_obj.my_attach_to_obj.x))
 	//show_debug_message("my_attach_init y: " + string(_obj.my_attach_to_obj.y))
 	
-	show_debug_message("_x_offset x: " + string(_x_offset))
-	show_debug_message("_y_offset y: " + string(_y_offset))
+	//show_debug_message("_x_offset x: " + string(_x_offset))
+	//show_debug_message("_y_offset y: " + string(_y_offset))
 	
 	//show_debug_message("my_attach_init: " + string(_obj.my_attach_to_obj.x))
     _obj.x = _obj.my_attach_to_obj.x + _x_offset;  // Przesuń obiekt podążający na pozycję x obiektu śledzonego

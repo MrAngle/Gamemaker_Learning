@@ -1,11 +1,11 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "MY_MOVE_MODIFICATOR_TYPE",
+  "name": "SKILL_LIST_ENUM",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
-    "name": "abstarct_moveable",
-    "path": "folders/Objects/abstarct_moveable.yy",
+    "name": "Skills",
+    "path": "folders/Objects/Game/Skills.yy",
   },
 }

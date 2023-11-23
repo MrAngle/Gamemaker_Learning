@@ -1,0 +1,1 @@
+my_DESTRUCTOR_moveable_resources(self);

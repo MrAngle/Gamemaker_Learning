@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "ModificatorEffects",
+  "name": "ModificatorManager",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {
