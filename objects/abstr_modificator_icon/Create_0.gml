@@ -12,3 +12,5 @@ show_debug_message("TWORZE MODIFICATOR " + string(id));
 effect_duration = modificator[global.MODIFICATOR_PRIVATE_COUNTER_IN_FRAME_RATE_KEY]; // Czas trwania efektu w sekundach
 effect_timer = effect_duration; // Timer odliczający czas
 bar_full_width = 100; // Pełna szerokość paska postępu
+
+alarm[0] = 60;

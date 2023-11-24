@@ -3,4 +3,5 @@ if (my_hit_animation_duration_counter > 0) {
     my_hit_animation_duration_counter -= 1; // Zmniejsz czas efektu
 }
 
-update_speed_modifiers(self);
+processAllModifiersPerFrame(self);
+//update_speed_modifiers(self);

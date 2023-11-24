@@ -1,10 +1,10 @@
-var modifier_spacing = 15; // Odległość między paskami modyfikatorów
-var index = getNumberOfActiveModifiers(modificator[global.MODIFICATOR_TARGET_KEY]) - 1; // Numer porządkowy danego modyfikatora, który musisz określić
+//var modifier_spacing = 15; // Odległość między paskami modyfikatorów
+//var index = getNumberOfActiveModifiers(modificator[global.MODIFICATOR_TARGET_KEY]) - 1; // Numer porządkowy danego modyfikatora, który musisz określić
 
-var _base_x = 0;
-x = _base_x + (index * 64) + (index *modifier_spacing)
+//var _base_x = 0;
+//x = _base_x + (index * 64) + (index *modifier_spacing)
 
-if (instance_exists(id)) {
+if (instance_exists(id) && isTimeClassType(modificator[global.MODIFICATOR_CLASS_TYPE_KEY])) {
 	// W wydarzeniu Create obiektu
 	//var timer = modificator[global.MODIFICATOR_DURATION_IN_FRAME_RATE_KEY];
 	
@@ -17,12 +17,11 @@ if (instance_exists(id)) {
 	// Rysowanie paska postępu
 	var bar_height = 10; // Ustawienie wysokości paska
 	var bar_x = x; // Ustawienie X dla lewego rogu paska
-	var bar_y = y + sprite_height + 5 + (index * modifier_spacing); // Ustawienie Y dla lewego rogu paska, 5 pikseli poniżej obiektu
+	var bar_y = y + sprite_height + 5 // + (index * modifier_spacing); // Ustawienie Y dla lewego rogu paska, 5 pikseli poniżej obiektu
 	draw_rectangle(bar_x, bar_y, bar_x + bar_current_width, bar_y + bar_height, false);
 	
-    draw_self();
-}
 
+}
 
 // W wydarzeniu Draw GUI gry lub obiektu odpowiedzialnego za GUI
 if (show_tooltip) {
@@ -43,3 +42,5 @@ if (show_tooltip) {
     draw_set_colour(c_white);
     draw_text(tooltip_x + 4, tooltip_y + 4, text); // +4 piksele dla małego marginesu
 }
+
+draw_self();

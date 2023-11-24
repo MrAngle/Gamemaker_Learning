@@ -4,15 +4,6 @@
 
 
 
-var _modificator = MoveTimeModifier(
-	self,             // Obiekt, który zostanie zmodyfikowany.
-	self,             // Obiekt źródłowy wywołujący modyfikację.
-	ImmobizableModificatorSprite,             // Sprite, który ma być wyświetlany jako ikona efektu.
-	MY_SKILL_LIST.AIMING,    // Enum reprezentujący umiejętność lub efekt.
-	99999,    // Czas trwania efektu w sekundach.
-	global.MY_EMPTY_FUNCTION_WITH_2_PARAMS,      // Funkcja, która zostanie wywołana (może być pusta).
-	0,				// Wartość modyfikatora, np. zmiana prędkości.
-	false                // Boolowska wartość określająca, czy efekt można skumulować.
-);		
+var _modificator = MODIFICATOR_AIMING_returnMODIFICATOR(self);
 
 add_new_Modifier(_modificator, ModificatorTypeMajor.MOVEMENT);  // zatrzymuje postać na 5 sekund (przy założeniu, że gra działa w 60 FPS)

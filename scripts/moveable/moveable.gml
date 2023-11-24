@@ -140,51 +140,9 @@ function get_speed_modifier(_obj) {
     return _obj.my_priv_speed_modifiers;
 }
 
-function update_speed_modifiers(_obj) {
-	
-	processTimeModifiersPerFrame(_obj.my_priv_speed_modifiers)
-	
-    //if (is_undefined(_obj.my_priv_speed_modifiers) || 
-	//	!ds_exists(_obj.my_priv_speed_modifiers, ds_type_map) ||
-	//	ds_map_size(_obj.my_priv_speed_modifiers) < 1) {
-    //    // Debug message
-    //    //show_debug_message("Mapa modyfikatorów prędkości nie istnieje lub nie jest zainicjowana.");
-    //    //// Jeśli nie istnieje, wyjdź z funkcji
-    //    return;
-    //}
-
-    //// Pobierz mapę modyfikatorów
-    //var _modifiers = _obj.my_priv_speed_modifiers;
-
-    //// Lista kluczy do usunięcia po iteracji
-    //var _keys_to_remove = ds_list_create();
-
-    //// Iteruj przez wszystkie modyfikatory
-    ////var _keys = ds_list_create();
-	
-    //for (var k = ds_map_find_first(_modifiers); !is_undefined(k); k = ds_map_find_next(_modifiers, k)) {
-	//	var _modifier = _modifiers[? k];
-    //    var _key = k;
-        
-    //    // Zaktualizuj czas trwania modyfikatora
-    //    _modifier[? global.MOVEABLE_PRIVATE_DURATION_IN_FRAMES_KEY] -= 1;
-
-    //    // Sprawdź, czy czas trwania modyfikatora dobiegł końca
-    //    if (_modifier[? global.MOVEABLE_PRIVATE_DURATION_IN_FRAMES_KEY] <= 0) {
-    //        // Dodaj klucz do listy kluczy do usunięcia
-	//		ds_list_add(_keys_to_remove, _key);
-    //    }
-    //}
-
-    //// Usuń modyfikatory, których czas trwania się zakończył
-    //for (var i = 0; i < ds_list_size(_keys_to_remove); i++) {
-    //    var _key = ds_list_find_value(_keys_to_remove, i);
-    //    ds_map_delete(_modifiers, _key);
-    //}
-
-    //// Zwolnij pamięć
-    //ds_list_destroy(_keys_to_remove);
-}
+//function update_speed_modifiers(_obj) {
+//	processTimeModifiersPerFrame(_obj.my_priv_speed_modifiers)
+//}
 
 function my_is_movable_type_object(_object)
 {

@@ -26,6 +26,18 @@ function my_GLOBAL_remove_player(_player_object) {
     }
 }
 
+
+function obj_is_player(_instance) {
+	var _id = _instance.id;
+    for (var i = 0; i < array_length(global.players); i++) {
+        if (global.players[i].id == _id) {
+            return true;
+        }
+    }
+    return false;
+}
+
+
 /// @description get_closest_player(x, y)
 /// @param x X-coordinate of the point of reference
 /// @param y Y-coordinate of the point of reference

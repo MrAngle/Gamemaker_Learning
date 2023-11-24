@@ -20,7 +20,7 @@ function my_DESTRUCTOR_default_modificator_draw_manager_init(_instance) {
 }
 
 
-function drawModificator(_modificator) {
+function drawModificator_returnModificatorObject(_modificator) {
 	//show_debug_message("drawModificator2 wywołana: " + string(current_time));
 
 	var mod_instance = instance_create_layer(0, 0, global.MODIFIERS_LAYER, abstr_modificator_icon);
@@ -28,6 +28,8 @@ function drawModificator(_modificator) {
 	mod_instance.image_index = 0;
 	mod_instance.depth = -100; // Ustawienie obiektu na wierzchu innych
 	mod_instance.modificator = _modificator;
+	
+	return mod_instance;
 }
 
 function calculateSpeedSprite(_obj) {
