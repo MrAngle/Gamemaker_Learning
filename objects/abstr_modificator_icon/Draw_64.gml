@@ -44,3 +44,32 @@ if (show_tooltip) {
 }
 
 draw_self();
+
+if(modificator[global.MODIFICATOR_STACK_NUMBER_KEY] > 1) {
+	var number_to_draw = string(modificator[global.MODIFICATOR_STACK_NUMBER_KEY]) + string("x"); // Liczba do narysowania
+
+	//var number_to_draw = "1"; // Liczba do narysowania
+	draw_set_colour(c_white); // Ustaw kolor tekstu na biały
+
+	// Oblicz pozycję lewego dolnego rogu obiektu
+	var x_pos = x;
+	var y_pos = y + sprite_height;
+
+	// Oblicz szerokość i wysokość tekstu
+	var text_width = string_width(number_to_draw);
+	var text_height = string_height(number_to_draw);
+
+	// Rysuj czarne tło pod tekstem
+	var padding = 4; // Dodaj trochę paddingu dookoła tekstu
+	var alpha = 0.5;
+	draw_set_alpha(alpha);
+
+	// Teraz rysujemy czarne tło z użyciem przezroczystości
+	draw_set_colour(c_black); // Ustaw kolor rysowania na czarny
+	draw_rectangle(x_pos - padding, y_pos - text_height, x_pos + text_width + padding, y_pos, false);
+
+	// Powrót do pełnej nieprzezroczystości dla tekstu
+	draw_set_alpha(1);
+	draw_set_colour(c_white); // Ustaw kolor tekstu na biały
+	draw_text(x_pos, y_pos - text_height, number_to_draw);
+}

@@ -38,6 +38,7 @@ global.MODIFICATOR_DEFAULT_DESCRIPTION = 4;
 global.MODIFICATOR_SKILL_NAME_ID_KEY = 5;
 global.MODIFICATOR_CLASS_TYPE_KEY = 6;
 global.MODIFICATOR_IS_DELETED_KEY = 7;
+global.MODIFICATOR_STACK_NUMBER_KEY = 8;
 
 
 function BaseModifier(
@@ -55,6 +56,7 @@ function BaseModifier(
 	_this[global.MODIFICATOR_SPRITE_KEY] = _sprite;
 	
 	_this[global.MODIFICATOR_IS_DELETED_KEY] = false;
+	_this[global.MODIFICATOR_STACK_NUMBER_KEY] = 1;
 	
 	_this[global.MODIFICATOR_SKILL_NAME_KEY] = global.SKILL_NAMES[? _skill_name_enum];
 	_this[global.MODIFICATOR_SKILL_NAME_ID_KEY] = _skill_name_enum;
@@ -67,6 +69,7 @@ function BaseModifier(
 global.MODIFICATOR_DURATION_IN_FRAME_RATE_KEY = 10
 global.MODIFICATOR_PRIVATE_COUNTER_IN_FRAME_RATE_KEY = 11
 global.MODIFICATOR_ON_DELETE_KEY = 12
+global.MODIFICATOR_ON_RESET_FUNCTION_KEY = 13
 
 // Definition of the Modifier structure
 function TimeModifier(
@@ -84,13 +87,15 @@ function TimeModifier(
 	_this[global.MODIFICATOR_DURATION_IN_FRAME_RATE_KEY] = _duration_in_seconds * global.MY_ROOM_SPEED;
 	_this[global.MODIFICATOR_PRIVATE_COUNTER_IN_FRAME_RATE_KEY] = _duration_in_seconds * global.MY_ROOM_SPEED;
 	_this[global.MODIFICATOR_ON_DELETE_KEY] = _on_delete_function;
+	
+	_this[global.MODIFICATOR_ON_RESET_FUNCTION_KEY] = function(_modificatorRef) {
+		_modificatorRef[global.MODIFICATOR_PRIVATE_COUNTER_IN_FRAME_RATE_KEY] = _modificatorRef[global.MODIFICATOR_DURATION_IN_FRAME_RATE_KEY];
+	};
 		
 	_this[global.MODIFICATOR_DEFAULT_DESCRIPTION] = _this[global.MODIFICATOR_DEFAULT_DESCRIPTION] + string("\nDuration: ") + string(_duration_in_seconds);
 
     return _this;
 };
-
-
 
 
 global.MODIFICATOR_EFFECT_VALUE_KEY = 25;
@@ -101,19 +106,6 @@ function MoveTimeModifier(_target, _source, _sprite, _skill_name_enum, _duration
     var _this = TimeModifier(_target, _source, _sprite, _skill_name_enum, _duration_in_seconds, _onDelete_function);
 	
 	_this[global.MODIFICATOR_CLASS_TYPE_KEY] = MODIFIER_CLASS_TYPE.TIME_MOVEMENT;
-	
-	//_this[global.MODIFICATOR_CLASS_TYPE_KEY] = MODIFIER_CLASS_TYPE.TIME_MOVEMENT;
-	
-	//_this[global.MODIFICATOR_EFFECT_VALUE_KEY] = _effectValue
-	//_this[global.MODIFICATOR_IS_STACKABLE_KEY] = _isStackable
-	
-	
-	//_this[global.MODIFICATOR_SOURCE_KEY] = _source;
-	//_this[global.MODIFICATOR_TARGET_KEY] = _target;
-	//_this[global.MODIFICATOR_ON_DELETE_KEY] = _onDelete_function;
-	
-	//_this[global.MODIFICATOR_DEFAULT_DESCRIPTION] = _this[global.MODIFICATOR_DEFAULT_DESCRIPTION] 
-	//	+ string("\nEFFECT VALUE: ") + string(_this[global.MODIFICATOR_EFFECT_VALUE_KEY]);
 
     return AddMoveModifierAttributesPriv(_this, _effectValue, _isStackable);
 };
@@ -129,15 +121,8 @@ function MoveAuraModifier(_target, _source, _sprite, _skill_name_enum, _onDelete
 
 function AddMoveModifierAttributesPriv(_this_base_modifier, _effectValue, _isStackable) {
 	
-	//_this_base_modifier[global.MODIFICATOR_CLASS_TYPE_KEY] = MODIFIER_CLASS_TYPE.TIME_MOVEMENT;
-	
 	_this_base_modifier[global.MODIFICATOR_EFFECT_VALUE_KEY] = _effectValue
 	_this_base_modifier[global.MODIFICATOR_IS_STACKABLE_KEY] = _isStackable
-	
-	
-	//_this_base_modifier[global.MODIFICATOR_SOURCE_KEY] = _source;
-	//_this_base_modifier[global.MODIFICATOR_TARGET_KEY] = _target;
-	//_this_base_modifier[global.MODIFICATOR_ON_DELETE_KEY] = _onDelete_function;
 	
 	_this_base_modifier[global.MODIFICATOR_DEFAULT_DESCRIPTION] = _this_base_modifier[global.MODIFICATOR_DEFAULT_DESCRIPTION] 
 		+ string("\nEFFECT VALUE: ") + string(_this_base_modifier[global.MODIFICATOR_EFFECT_VALUE_KEY]);
@@ -171,3 +156,8 @@ function AuraModifier(
 
     return _this;
 };
+
+
+//function LoadStackableModifier(_this_base_modifier) {
+	
+//}

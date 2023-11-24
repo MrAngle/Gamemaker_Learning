@@ -16,3 +16,18 @@ function MODIFICATOR_AIMING_returnMODIFICATOR(_obj) {
 	
 	return _modificator;
 }
+
+function MODIFICATOR_WIND_1_returnMODIFICATOR(_targetObject, _sourceObject) {
+	var _modificator = MoveTimeModifier(
+		_targetObject,             // Obiekt, który zostanie zmodyfikowany.
+		_sourceObject,             // Obiekt źródłowy wywołujący modyfikację.
+		SlowModificatorSprite,             // Sprite, który ma być wyświetlany jako ikona efektu.
+		MY_SKILL_LIST.WIND_1,    // Enum reprezentujący umiejętność lub efekt.
+		3,    // Czas trwania efektu w sekundach.
+		global.MY_EMPTY_FUNCTION_WITH_2_PARAMS,      // Funkcja, która zostanie wywołana (może być pusta).
+		0.1,				// Wartość modyfikatora, np. zmiana prędkości.
+		true                // Boolowska wartość określająca, czy efekt można skumulować.
+	);			
+
+	return _modificator;
+}

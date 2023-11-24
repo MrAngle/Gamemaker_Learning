@@ -6,16 +6,18 @@ function my_DEFAULT_simple_push_action(_skill_action_obj) {
 										 _target_object.x, 
 										 _target_object.y);
 										 
-		var _modificator = MoveTimeModifier(
-		    _target_object,             // Obiekt, który zostanie zmodyfikowany.
-		    _skill_action_obj_param,             // Obiekt źródłowy wywołujący modyfikację.
-		    SlowModificatorSprite,             // Sprite, który ma być wyświetlany jako ikona efektu.
-		    MY_SKILL_LIST.WIND_1,    // Enum reprezentujący umiejętność lub efekt.
-		    3,    // Czas trwania efektu w sekundach.
-		    global.MY_EMPTY_FUNCTION_WITH_2_PARAMS,      // Funkcja, która zostanie wywołana (może być pusta).
-		    0.1,				// Wartość modyfikatora, np. zmiana prędkości.
-		    false                // Boolowska wartość określająca, czy efekt można skumulować.
-		);			
+		var _modificator = MODIFICATOR_WIND_1_returnMODIFICATOR(_target_object, _skill_action_obj_param);
+										 
+		//var _modificator = MoveTimeModifier(
+		//    _target_object,             // Obiekt, który zostanie zmodyfikowany.
+		//    _skill_action_obj_param,             // Obiekt źródłowy wywołujący modyfikację.
+		//    SlowModificatorSprite,             // Sprite, który ma być wyświetlany jako ikona efektu.
+		//    MY_SKILL_LIST.WIND_1,    // Enum reprezentujący umiejętność lub efekt.
+		//    3,    // Czas trwania efektu w sekundach.
+		//    global.MY_EMPTY_FUNCTION_WITH_2_PARAMS,      // Funkcja, która zostanie wywołana (może być pusta).
+		//    0.1,				// Wartość modyfikatora, np. zmiana prędkości.
+		//    false                // Boolowska wartość określająca, czy efekt można skumulować.
+		//);			
 		
 		add_new_Modifier(_modificator);
 										 
