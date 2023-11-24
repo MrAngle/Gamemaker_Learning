@@ -23,15 +23,21 @@ function isAuraClassType(_typeEnum) {
 			_typeEnum == MODIFIER_CLASS_TYPE.AURA_MOVEMENT;
 }
 
+function isMOVEMENTClassType(_typeEnum) {
+	return	_typeEnum == MODIFIER_CLASS_TYPE.TIME_MOVEMENT || 
+			_typeEnum == MODIFIER_CLASS_TYPE.AURA_MOVEMENT;
+}
 
 
-global.MODIFICATOR_SOURCE_KEY = 10000;
-global.MODIFICATOR_TARGET_KEY = 10001;
-global.MODIFICATOR_SPRITE_KEY = 10002;
-global.MODIFICATOR_SKILL_NAME_KEY = 10003;
-global.MODIFICATOR_DEFAULT_DESCRIPTION = 10004;
-global.MODIFICATOR_SKILL_NAME_ID_KEY = 10005;
-global.MODIFICATOR_CLASS_TYPE_KEY = 10006;
+
+global.MODIFICATOR_SOURCE_KEY = 0;
+global.MODIFICATOR_TARGET_KEY = 1;
+global.MODIFICATOR_SPRITE_KEY = 2;
+global.MODIFICATOR_SKILL_NAME_KEY = 3;
+global.MODIFICATOR_DEFAULT_DESCRIPTION = 4;
+global.MODIFICATOR_SKILL_NAME_ID_KEY = 5;
+global.MODIFICATOR_CLASS_TYPE_KEY = 6;
+global.MODIFICATOR_IS_DELETED_KEY = 7;
 
 
 function BaseModifier(
@@ -48,6 +54,8 @@ function BaseModifier(
 	_this[global.MODIFICATOR_TARGET_KEY] = _target;
 	_this[global.MODIFICATOR_SPRITE_KEY] = _sprite;
 	
+	_this[global.MODIFICATOR_IS_DELETED_KEY] = false;
+	
 	_this[global.MODIFICATOR_SKILL_NAME_KEY] = global.SKILL_NAMES[? _skill_name_enum];
 	_this[global.MODIFICATOR_SKILL_NAME_ID_KEY] = _skill_name_enum;
 	
@@ -56,9 +64,9 @@ function BaseModifier(
     return _this;
 };
 
-global.MODIFICATOR_DURATION_IN_FRAME_RATE_KEY = 10010
-global.MODIFICATOR_PRIVATE_COUNTER_IN_FRAME_RATE_KEY = 10011
-global.MODIFICATOR_ON_DELETE_KEY = 10012
+global.MODIFICATOR_DURATION_IN_FRAME_RATE_KEY = 10
+global.MODIFICATOR_PRIVATE_COUNTER_IN_FRAME_RATE_KEY = 11
+global.MODIFICATOR_ON_DELETE_KEY = 12
 
 // Definition of the Modifier structure
 function TimeModifier(
@@ -85,8 +93,8 @@ function TimeModifier(
 
 
 
-global.MODIFICATOR_EFFECT_VALUE_KEY = 10020;
-global.MODIFICATOR_IS_STACKABLE_KEY = 10021;
+global.MODIFICATOR_EFFECT_VALUE_KEY = 25;
+global.MODIFICATOR_IS_STACKABLE_KEY = 26;
 
 // Definition of the MoveModifier structure, which extends Modifier
 function MoveTimeModifier(_target, _source, _sprite, _skill_name_enum, _duration_in_seconds, _onDelete_function, _effectValue, _isStackable) {
@@ -163,85 +171,3 @@ function AuraModifier(
 
     return _this;
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Definition of the Modifier structure
-//function TimeModifier(
-//    _duration_in_seconds,
-//    _isStackable,
-//    _timeToTick_in_seconds,
-//    //_impactScope,
-//    _source
-//) {
-//    var _this = {
-
-//        duration_in_seconds: _duration_in_seconds, // in seconds
-//        isStackable: _isStackable, // true/false
-//        timeToTick_in_seconds: _timeToTick_in_seconds, // in seconds
-//        //impactScope: _impactScope, // e.g., "health", "speed"
-//        source: _source, // e.g., "fire_potion"
-//        stacks: 1, // default is 1 stack
-
-//        apply: function(target) {
-//            // Logic for applying the modifier to the target
-//            // Insert code here
-//        },
-
-//        update: function() {
-//            // Logic for updating the state of the modifier (e.g., decreasing duration)
-//            // Insert code here
-//        }
-//    };
-
-//    return _this;
-//};
-
-//// Definition of the MoveModifier structure, which extends Modifier
-//function MoveModifier(_effectValue, _duration, _isStackable, _timeToTick, _source, _moveModifier) {
-//    var _base = Modifier(_effectValue, _duration, _isStackable, _timeToTick, _source);
-    
-//    // Dodanie nowego pola do struktury MoveModifier
-//    var _this = {
-//        base: _base, // Zawiera wszystkie metody i właściwości bazowe
-//        moveModifier: _moveModifier, // Nowe dodatkowe pole
-
-//        // Można nadpisać metody bazowe lub dodać nowe
-//        apply: function(target) {
-//            // Wywołanie metody bazowej z możliwą modyfikacją
-//            this.base.apply(target);
-//            // Dodatkowa logika specyficzna dla MoveModifier
-//            target.speed += this.base.effectValue * this.moveModifier;
-//        },
-
-//        // Jeśli chcesz aktualizować bazowe właściwości, możesz dodać nową metodę lub nadpisać istniejącą
-//        update: function() {
-//            this.base.update(); // Wywołanie aktualizacji bazowej
-//            // Możliwe dodatkowe operacje...
-//        }
-//    };
-
-//    return _this;
-//};

@@ -6,4 +6,4 @@
 
 var _modificator = MODIFICATOR_AIMING_returnMODIFICATOR(self);
 
-add_new_Modifier(_modificator, ModificatorTypeMajor.MOVEMENT);  // zatrzymuje postać na 5 sekund (przy założeniu, że gra działa w 60 FPS)
+add_new_Modifier(_modificator);  // zatrzymuje postać na 5 sekund (przy założeniu, że gra działa w 60 FPS)

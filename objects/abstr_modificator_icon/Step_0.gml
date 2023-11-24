@@ -6,11 +6,20 @@ if(isTimeClassType(modificator[global.MODIFICATOR_CLASS_TYPE_KEY])) {
 } else {
 
 if(isAuraClassType(modificator[global.MODIFICATOR_CLASS_TYPE_KEY])) {
+	
+
+	
 	//if (!instance_exists(id)) {
 	//	with (self)
 	//	{instance_destroy();}
 	//}
 }}
+
+
+if (modificator[global.MODIFICATOR_IS_DELETED_KEY] == true) {
+	with (self)
+	{instance_destroy();}
+}
 
 
 var mx = device_mouse_x_to_gui(0); // Pobierz pozycję kursora myszy w GUI

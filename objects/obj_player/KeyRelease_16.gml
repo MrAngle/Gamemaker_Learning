@@ -3,10 +3,11 @@
 //}
 my_STATE_aiming = false;
 
-var _modifier_id = MY_SKILL_LIST.AIMING;
-if (ds_map_exists(self.my_priv_speed_modifiers, _modifier_id)) {
-    ds_map_delete(self.my_priv_speed_modifiers, _modifier_id);
+remove_ModifierBySkillListEnum(self, MY_SKILL_LIST.AIMING);
+//var _modifier_id = MY_SKILL_LIST.AIMING;
+//if (ds_map_exists(self.my_priv_speed_modifiers, _modifier_id)) {
+//    ds_map_delete(self.my_priv_speed_modifiers, _modifier_id);
 	
-}
+//}
 
 my_TRIGGER_direction_change(self);

@@ -2,6 +2,7 @@
 // // https://help.yoyogames.com/hc/en-us/articles/360005277377
 
 // TRZEBA OSOBNO NAME I WARTOSC
+// TO KLUCZE MAPY MODYFIKATOROW
 enum MY_SKILL_LIST {
 	NOT_DEFINED,
 	

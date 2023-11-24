@@ -17,7 +17,7 @@ function my_DEFAULT_simple_push_action(_skill_action_obj) {
 		    false                // Boolowska wartość określająca, czy efekt można skumulować.
 		);			
 		
-		add_new_Modifier(_modificator, ModificatorTypeMajor.MOVEMENT);
+		add_new_Modifier(_modificator);
 										 
 		//MoveTimeModifier(_target, _source, _sprite, _skill_name_enum, _duration_in_sec, _emptyFunction, _value, false);
 		//add_speed_modifier(_target_object, _skill_action_obj_param, SlowModificatorSprite, MY_SKILL_LIST.WIND_1, _skill_action_obj_param.id, 0.1, 3);
