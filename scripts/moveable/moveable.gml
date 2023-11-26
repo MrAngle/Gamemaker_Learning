@@ -119,30 +119,9 @@ function my_is_moveable_object(_obj)
 	return _obj.my_is_moveable;
 }
 
-
-// Funkcja do dodawania modyfikatora
-//function add_speed_modifier(_target, _source, _sprite, _skill_name_enum, _str_id, _value, _duration_in_sec) {
-//    //var _modifier = ds_map_create();
-	
-//	var _emptyFunction = function(_obj, _source) {};
-	
-//	var _modifier = MoveTimeModifier(_target, _source, _sprite, _skill_name_enum, _duration_in_sec, _emptyFunction, _value, false);
-//	drawModificator(_modifier);
-//    //_modifier[? global.MOVEABLE_VALUE_KEY] = _value;
-//	//_modifier[? global.MOVEABLE_BASE_DURATION_IN_FRAMES_KEY] = _duration_in_sec * global.MY_ROOM_SPEED;
-	
-//	//_modifier[? global.MOVEABLE_PRIVATE_DURATION_IN_FRAMES_KEY] = _duration_in_sec * global.MY_ROOM_SPEED;
-	
-//    _target.my_priv_speed_modifiers[? _str_id] = _modifier;
-//}
-
 function get_speed_modifier(_obj) {
     return _obj.my_priv_speed_modifiers;
 }
-
-//function update_speed_modifiers(_obj) {
-//	processTimeModifiersPerFrame(_obj.my_priv_speed_modifiers)
-//}
 
 function my_is_movable_type_object(_object)
 {

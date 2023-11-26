@@ -34,11 +34,13 @@ function private_processModifiersPerFrame(_modifiers) {
 		    case MODIFIER_CLASS_TYPE.TIME_MOVEMENT:
 		       _shouldDelete = processTimeModifierPerFrame_returnShouldDelete(_modifier_class, _modifiers);
 		        break;
+			case MODIFIER_CLASS_TYPE.TIME_DAMAGE:
+		       _shouldDelete = processTimeModifierPerFrame_returnShouldDelete(_modifier_class, _modifiers);
+		        break;
 		    case MODIFIER_CLASS_TYPE.AURA_MOVEMENT:
 		        processAuraModifiersPerFrame(_modifier_class, _modifiers);
 		        break;
 		    default:
-		        // Kod, który zostanie wykonany, jeśli żaden z przypadków nie pasuje
 		        break;
 		}
 		
@@ -69,7 +71,6 @@ function processTimeModifierPerFrame_returnShouldDelete(_modifier_class, _modifi
         // Dodaj klucz do listy kluczy do usunięcia
 		_modifier_class[global.MODIFICATOR_ON_DELETE_KEY](	_modifier_class[global.MODIFICATOR_TARGET_KEY], 
 															_modifier_class[global.MODIFICATOR_SOURCE_KEY]);
-		
 		return true;
     }
 	return false;
@@ -117,12 +118,40 @@ function add_new_Modifier(_modificator_class) {
 		return true;
 	} else {
 		
+	if(isMOVEMENTClassType(_modificator_class[global.MODIFICATOR_CLASS_TYPE_KEY])) {
+	}
+		priv_add_modifier(_modificator_class);
 	//if(isMOVEMENTClassType(_modificator_class[global.MODIFICATOR_CLASS_TYPE_KEY])) {
 		// to add
 	}
 	
 	show_debug_message("SHould add modifier, but not found: " + string(id) + " FOR: " + string(_modificator_class));
 	return false;
+}
+
+// PRIVATE
+function priv_add_modifier(_modifier_class) {
+	
+	var _target = _modifier_class[global.MODIFICATOR_TARGET_KEY];
+	
+	var _foundModificatorToStack = addStack_handleStackableModifier_isFoundModifier(
+		_target.get_dot_modifier(_target), 
+		_modifier_class
+	)
+	
+	if(_foundModificatorToStack) {
+		show_debug_message("STACK  modifier, but not found: " + string(_modifier_class[global.MODIFICATOR_STACK_NUMBER_KEY]));
+		return;
+	}
+	
+	var _modifier_obj = drawModificator_returnModificatorObject(_modifier_class);
+	
+	if(obj_is_player(_modifier_class[global.MODIFICATOR_TARGET_KEY])) {
+		ds_list_add(global.PLAYER_MODIFICATORS_OBJECTS_LIST, _modifier_obj);
+	}
+	_target.set_dot_modifier(_target, _modifier_class);
+
+	update_modifier_position(_target);
 }
 
 // PRIVATE
@@ -140,7 +169,10 @@ function add_speed_modifier(_modifier_class) {
 	
 	var _modifier_obj = drawModificator_returnModificatorObject(_modifier_class);
 	
-	ds_list_add(global.PLAYER_MODIFICATORS_OBJECTS_LIST, _modifier_obj);
+	if(obj_is_player(_modifier_class[global.MODIFICATOR_TARGET_KEY])) {
+		ds_list_add(global.PLAYER_MODIFICATORS_OBJECTS_LIST, _modifier_obj);
+	}
+	
     _modifier_class[global.MODIFICATOR_TARGET_KEY].my_priv_speed_modifiers[? _modifier_class[global.MODIFICATOR_SKILL_NAME_ID_KEY]] = _modifier_class;
 	
 	update_modifier_position(_modifier_class[global.MODIFICATOR_TARGET_KEY]);
@@ -183,7 +215,6 @@ function addStack_handleStackableModifier_isFoundModifier(_modifierMap, _modifie
 		return false;
 	}
 	
-	
 	if (ds_map_exists(_modifierMap, _modifierClass[global.MODIFICATOR_SKILL_NAME_ID_KEY])) {
 		var _existedModifier = ds_map_find_value(_modifierMap, _modifierClass[global.MODIFICATOR_SKILL_NAME_ID_KEY]);
 
@@ -198,6 +229,7 @@ function getArrayOfAllModifiers_returnArray(_obj) {
 	var _arrayOfAllModifiers = [];
 	
 	_arrayOfAllModifiers[0] = get_speed_modifier(_obj);
+	_arrayOfAllModifiers[1] = _obj.get_dot_modifier(_obj);
 	
 	return _arrayOfAllModifiers;
 }
@@ -212,8 +244,6 @@ function getNumberOfActiveModifiers(_obj) {
 	
 	return _numberOfActiveModifiers;
 }
-
-
 
 function update_modifier_position(_target_obj) {
 	var _is_player = obj_is_player(_target_obj);

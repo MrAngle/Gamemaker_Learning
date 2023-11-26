@@ -1,15 +1,22 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "modificatorsManager",
-  "eventList": [],
+  "name": "obj_modificator_player",
+  "eventList": [
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
+  ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
     "name": "ModificatorObjects",
     "path": "folders/Objects/modificatorsScripts/ModificatorObjects.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "abstr_modificator",
+    "path": "objects/abstr_modificator/abstr_modificator.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,

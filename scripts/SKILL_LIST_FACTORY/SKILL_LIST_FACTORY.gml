@@ -2,19 +2,16 @@
 // // https://help.yoyogames.com/hc/en-us/articles/360005277377
 
 
-//function SKILL_AIMING_returnSKILL(_obj) {
+function FIREBALL_ATTACK_1_action(_skill_action_obj) {
+	var _action_to_run = function(_skill_action_obj_param, _target_object) {
+		var _damage = my_calculate_damage(_skill_action_obj_param);
+		var _modificator = MODIFICATOR_FIRE_DOT_1_returnMODIFICATOR(_target_object, _skill_action_obj_param);
+		add_new_Modifier(_modificator);
+		
+		return _target_object.my_RECEIVE_DAMAGE_function(_target_object, _skill_action_obj_param, _damage);
+	}
 	
-//	var _modificator = MoveAuraModifier(
-//	_obj,             // Obiekt, który zostanie zmodyfikowany.
-//	_obj,             // Obiekt źródłowy wywołujący modyfikację.
-//	ImmobizableModificatorSprite,             // Sprite, który ma być wyświetlany jako ikona efektu.
-//	MY_SKILL_LIST.AIMING,    // Enum reprezentujący umiejętność lub efekt.
-//	global.MY_EMPTY_FUNCTION_WITH_2_PARAMS,      // Funkcja, która zostanie wywołana (może być pusta).
-//	0,				// Wartość modyfikatora, np. zmiana prędkości.
-//	false                // Boolowska wartość określająca, czy efekt można skumulować.
+	var _skill_action_struct = my_createSkillAction(SKILL_PHASE.DAMAGE, _action_to_run, 0);
 	
-//	return _modificator;
-//);		
-
-	
-//}
+	my_addSkillAction(_skill_action_obj.my_skill_execution_sequence, _skill_action_struct);
+}

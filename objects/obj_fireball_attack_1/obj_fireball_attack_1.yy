@@ -1,0 +1,43 @@
+{
+  "resourceType": "GMObject",
+  "resourceVersion": "1.0",
+  "name": "obj_fireball_attack_1",
+  "eventList": [
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":{"name":"abst_destroyable_collision","path":"objects/abst_destroyable_collision/abst_destroyable_collision.yy",},"eventNum":0,"eventType":4,"isDnD":false,},
+  ],
+  "managed": true,
+  "overriddenProperties": [
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"abst_damageable","path":"objects/abst_damageable/abst_damageable.yy",},"propertyId":{"name":"my_max_damage","path":"objects/abst_damageable/abst_damageable.yy",},"value":"15",},
+    {"resourceType":"GMOverriddenProperty","resourceVersion":"1.0","name":"","objectId":{"name":"abst_damageable","path":"objects/abst_damageable/abst_damageable.yy",},"propertyId":{"name":"my_min_damage","path":"objects/abst_damageable/abst_damageable.yy",},"value":"7",},
+  ],
+  "parent": {
+    "name": "fireball_attack_1",
+    "path": "folders/Objects/Game/Skills/Attacks/Fire/fireball_attack_1.yy",
+  },
+  "parentObjectId": {
+    "name": "abst_damageable",
+    "path": "objects/abst_damageable/abst_damageable.yy",
+  },
+  "persistent": false,
+  "physicsAngularDamping": 0.1,
+  "physicsDensity": 0.5,
+  "physicsFriction": 0.2,
+  "physicsGroup": 1,
+  "physicsKinematic": false,
+  "physicsLinearDamping": 0.1,
+  "physicsObject": false,
+  "physicsRestitution": 0.1,
+  "physicsSensor": false,
+  "physicsShape": 1,
+  "physicsShapePoints": [],
+  "physicsStartAwake": true,
+  "properties": [],
+  "solid": false,
+  "spriteId": {
+    "name": "sprite_fireball_attack_1",
+    "path": "sprites/sprite_fireball_attack_1/sprite_fireball_attack_1.yy",
+  },
+  "spriteMaskId": null,
+  "visible": true,
+}

@@ -1,4 +1,5 @@
 global.MODIFIERS_LAYER = "Modifiers";
+global.CONSTRUCTOR_PARAM_MODIFIERS = "CONSTRUCTOR_PARAM_MODIFIERS";
 
 
 function my_INHERITENCE_modificator_draw_manager(_obj)
@@ -22,29 +23,23 @@ function my_DESTRUCTOR_default_modificator_draw_manager_init(_instance) {
 
 function drawModificator_returnModificatorObject(_modificator) {
 	//show_debug_message("drawModificator2 wywołana: " + string(current_time));
+	
+	var test = [];
+	 test[0] = _modificator;
 
-	var mod_instance = instance_create_layer(0, 0, global.MODIFIERS_LAYER, abstr_modificator_icon);
-	mod_instance.sprite_index = _modificator[global.MODIFICATOR_SPRITE_KEY];
-	mod_instance.image_index = 0;
-	mod_instance.depth = -100; // Ustawienie obiektu na wierzchu innych
-	mod_instance.modificator = _modificator;
-	
-	return mod_instance;
-}
+	add_params_byName_for_new_obj(global.CONSTRUCTOR_PARAM_MODIFIERS, test);
 
-function calculateSpeedSprite(_obj) {
-	var currentSpeed = my_get_speed(_obj);
-	if(currentSpeed == _obj.my_priv_base_speed) {
-		return;
-	}
-	
-	if(currentSpeed <= 0.01) {
-		return ImmobizableModificatorSprite;
-	}
-	
-	if(currentSpeed > _obj.my_priv_base_speed) {
-		return ImmobizableModificatorSprite;
+	var _mod_instance;
+	if(obj_is_player(_modificator[global.MODIFICATOR_TARGET_KEY])) {
+		_mod_instance = instance_create_layer(0, 0, global.MODIFIERS_LAYER, obj_modificator_player);
 	} else {
-		return SlowModificatorSprite;
+		_mod_instance = instance_create_layer(0, 0, global.MODIFIERS_LAYER, obj_modificator_enemy);
 	}
+
+	_mod_instance.sprite_index = _modificator[global.MODIFICATOR_SPRITE_KEY];
+	_mod_instance.image_index = 0;
+	_mod_instance.depth = -100; // Ustawienie obiektu na wierzchu innych
+
+	return _mod_instance;
 }
+

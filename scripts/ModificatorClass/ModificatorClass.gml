@@ -10,12 +10,14 @@ enum MODIFIER_CLASS_TYPE {
 	TIME,
 	AURA,
 	TIME_MOVEMENT,
+	TIME_DAMAGE,
 	AURA_MOVEMENT
 }
 
 function isTimeClassType(_typeEnum) {
 	return	_typeEnum == MODIFIER_CLASS_TYPE.TIME || 
-			_typeEnum == MODIFIER_CLASS_TYPE.TIME_MOVEMENT;
+			_typeEnum == MODIFIER_CLASS_TYPE.TIME_MOVEMENT ||
+			_typeEnum == MODIFIER_CLASS_TYPE.TIME_DAMAGE;
 }
 
 function isAuraClassType(_typeEnum) {
@@ -26,6 +28,10 @@ function isAuraClassType(_typeEnum) {
 function isMOVEMENTClassType(_typeEnum) {
 	return	_typeEnum == MODIFIER_CLASS_TYPE.TIME_MOVEMENT || 
 			_typeEnum == MODIFIER_CLASS_TYPE.AURA_MOVEMENT;
+}
+
+function isDOTClassType(_typeEnum) {
+	return	_typeEnum == MODIFIER_CLASS_TYPE.TIME_DAMAGE;
 }
 
 
@@ -39,6 +45,17 @@ global.MODIFICATOR_SKILL_NAME_ID_KEY = 5;
 global.MODIFICATOR_CLASS_TYPE_KEY = 6;
 global.MODIFICATOR_IS_DELETED_KEY = 7;
 global.MODIFICATOR_STACK_NUMBER_KEY = 8;
+global.MODIFICATOR_IS_STACKABLE_KEY = 9;
+
+global.MODIFICATOR_DURATION_IN_FRAME_RATE_KEY = 10
+global.MODIFICATOR_PRIVATE_COUNTER_IN_FRAME_RATE_KEY = 11
+global.MODIFICATOR_ON_DELETE_KEY = 12
+global.MODIFICATOR_ON_RESET_FUNCTION_KEY = 13
+
+global.MODIFICATOR_EFFECT_VALUE_KEY = 25;
+global.MODIFICATOR_INTERVAL_TIME_IN_FRAME_RATE_KEY = 26;
+global.MODIFICATOR_PRIVATE_INTERVAL_COUNTER_TIME_IN_FRAME_RATE_KEY = 27;
+global.MODIFICATOR_DAMAGE_DOT = 28;
 
 
 function BaseModifier(
@@ -56,7 +73,9 @@ function BaseModifier(
 	_this[global.MODIFICATOR_SPRITE_KEY] = _sprite;
 	
 	_this[global.MODIFICATOR_IS_DELETED_KEY] = false;
+	
 	_this[global.MODIFICATOR_STACK_NUMBER_KEY] = 1;
+	_this[global.MODIFICATOR_IS_STACKABLE_KEY] = false;
 	
 	_this[global.MODIFICATOR_SKILL_NAME_KEY] = global.SKILL_NAMES[? _skill_name_enum];
 	_this[global.MODIFICATOR_SKILL_NAME_ID_KEY] = _skill_name_enum;
@@ -66,10 +85,7 @@ function BaseModifier(
     return _this;
 };
 
-global.MODIFICATOR_DURATION_IN_FRAME_RATE_KEY = 10
-global.MODIFICATOR_PRIVATE_COUNTER_IN_FRAME_RATE_KEY = 11
-global.MODIFICATOR_ON_DELETE_KEY = 12
-global.MODIFICATOR_ON_RESET_FUNCTION_KEY = 13
+
 
 // Definition of the Modifier structure
 function TimeModifier(
@@ -98,11 +114,18 @@ function TimeModifier(
 };
 
 
-global.MODIFICATOR_EFFECT_VALUE_KEY = 25;
-global.MODIFICATOR_IS_STACKABLE_KEY = 26;
 
 // Definition of the MoveModifier structure, which extends Modifier
-function MoveTimeModifier(_target, _source, _sprite, _skill_name_enum, _duration_in_seconds, _onDelete_function, _effectValue, _isStackable) {
+function MoveTimeModifier(
+	_target, 
+	_source, 
+	_sprite, 
+	_skill_name_enum, 
+	_duration_in_seconds, 
+	_onDelete_function, 
+	_effectValue,
+	_isStackable
+) {
     var _this = TimeModifier(_target, _source, _sprite, _skill_name_enum, _duration_in_seconds, _onDelete_function);
 	
 	_this[global.MODIFICATOR_CLASS_TYPE_KEY] = MODIFIER_CLASS_TYPE.TIME_MOVEMENT;
@@ -130,16 +153,6 @@ function AddMoveModifierAttributesPriv(_this_base_modifier, _effectValue, _isSta
     return _this_base_modifier;
 };
 
-
-
-// Użycie struktury Modyfikator
-//var modyfikator = Modifier(10, 60, true, 1, "potion");
-//modyfikator.zastosuj(cel); // cel to obiekt, na który ma wpływ modyfikator
-//modyfikator.aktualizuj();
-
-
-
-
 function AuraModifier(
     _target,
 	_source,
@@ -158,6 +171,30 @@ function AuraModifier(
 };
 
 
-//function LoadStackableModifier(_this_base_modifier) {
+
+function DOTModifier(
+	_target, 
+	_source, 
+	_sprite, 
+	_skill_name_enum, 
+	_duration_in_seconds, 
+	_onDelete_function, 
+	_dotDamage,
+	_isStackable,
+	_effectIntervalInSeconds
+) {
+    var _this = TimeModifier(_target, _source, _sprite, _skill_name_enum, _duration_in_seconds, _onDelete_function);
 	
-//}
+	_this[global.MODIFICATOR_CLASS_TYPE_KEY] = MODIFIER_CLASS_TYPE.TIME_DAMAGE;
+	
+	_this[global.MODIFICATOR_DAMAGE_DOT] = _dotDamage;
+	_this[global.MODIFICATOR_IS_STACKABLE_KEY] = _isStackable;
+	_this[global.MODIFICATOR_INTERVAL_TIME_IN_FRAME_RATE_KEY] = _effectIntervalInSeconds * global.MY_ROOM_SPEED;
+	_this[global.MODIFICATOR_PRIVATE_INTERVAL_COUNTER_TIME_IN_FRAME_RATE_KEY] = 
+		_this[global.MODIFICATOR_INTERVAL_TIME_IN_FRAME_RATE_KEY];
+	
+	_this[global.MODIFICATOR_DEFAULT_DESCRIPTION] = _this[global.MODIFICATOR_DEFAULT_DESCRIPTION] 
+		+ string("\nEFFECT VALUE: ") + string(_this[global.MODIFICATOR_EFFECT_VALUE_KEY]);
+
+    return _this;
+};
