@@ -1,3 +1,3 @@
 paramToUseForFunction = undefined;
-onClickedAction = function(_obj) {
+onClickedAction = function(_obj, _buttonRef) {
 }
