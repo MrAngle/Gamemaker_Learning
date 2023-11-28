@@ -1,4 +1,5 @@
 // Najpierw rysuj sprite gracza
+
 draw_self();
 
 if (my_STATE_aiming) {

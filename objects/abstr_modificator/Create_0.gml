@@ -1,7 +1,10 @@
 modificator = get_params_byName_from_global_map(global.CONSTRUCTOR_PARAM_MODIFIERS)[0];
+modificator[global.MODIFICATOR_OBJECT_REFERENCE_KEY] = self;
 
 target = modificator[global.MODIFICATOR_TARGET_KEY];
 source = modificator[global.MODIFICATOR_SOURCE_KEY];
+
+x_offset = 0;
 
 show_tooltip = false;
 show_debug_message("TWORZE MODIFICATOR " + string(id));
@@ -33,7 +36,7 @@ if(obj_is_player(modificator[global.MODIFICATOR_TARGET_KEY])) {
 	    var target = _self.modificator[global.MODIFICATOR_TARGET_KEY];
 	    var scale_factor = 32 / 64; // Skalowanie z 64x64 do 32x32
 		
-		_self.x = target.x - (target.sprite_width * scale_factor) - 10;
+		_self.x = target.x + x_offset - (target.sprite_width * scale_factor) - 10;
 		_self.y = target.y - (target.sprite_height  * scale_factor) - 50;
 		
 		_self.image_xscale = scale_factor;

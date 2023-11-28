@@ -13,11 +13,12 @@ function custom_moveable_init(_instance) {
 }
 
 function custom_sprites_init(_instance) {
-	_instance.my_sprite_MOVEABLE_UP = spr_player_walk_up;
-    _instance.my_sprite_MOVEABLE_DOWN = spr_player_walk_down;
-    _instance.my_sprite_MOVEABLE_LEFT = spr_player_walk_side;
-    _instance.my_sprite_MOVEABLE_RIGHT = spr_player_walk_side;
-	_instance.my_sprite_MOVEABLE_IDLE = spr_player_idle
+	_instance.my_sprite_MOVEABLE_UP = Spr_Char_03_Back;
+    _instance.my_sprite_MOVEABLE_DOWN = Spr_Char_03_Front;
+    _instance.my_sprite_MOVEABLE_LEFT = Spr_Char_03_Side;
+    _instance.my_sprite_MOVEABLE_RIGHT = Spr_Char_03_Side;
+	_instance.my_sprite_MOVEABLE_IDLE = Spr_Char_03_Side;
+	//_instance.my_sprite_MOVEABLE_IDLE = spr_player_idle
 }
 
 my_object_moveable_init_function = custom_moveable_init;

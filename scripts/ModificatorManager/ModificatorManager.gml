@@ -111,22 +111,19 @@ function processAuraModifiersPerFrame(_modifier, _modifiers) {
 function add_new_Modifier(_modificator_class) {
 	
 	var foundModificatorToStack = false;
+	
+	var _modificatorClassType = _modificator_class[global.MODIFICATOR_CLASS_TYPE_KEY];
 
 	
-	if(isMOVEMENTClassType(_modificator_class[global.MODIFICATOR_CLASS_TYPE_KEY])) {
+	if(isMOVEMENTClassType(_modificatorClassType)) {
 		add_speed_modifier(_modificator_class)
-		return true;
 	} else {
-		
-	if(isMOVEMENTClassType(_modificator_class[global.MODIFICATOR_CLASS_TYPE_KEY])) {
+	if(isDOTClassType(_modificatorClassType)) {
 	}
 		priv_add_modifier(_modificator_class);
-	//if(isMOVEMENTClassType(_modificator_class[global.MODIFICATOR_CLASS_TYPE_KEY])) {
-		// to add
 	}
-	
-	show_debug_message("SHould add modifier, but not found: " + string(id) + " FOR: " + string(_modificator_class));
-	return false;
+		
+	priv_update_modifier_position(_modificator_class[global.MODIFICATOR_TARGET_KEY]);
 }
 
 // PRIVATE
@@ -134,48 +131,60 @@ function priv_add_modifier(_modifier_class) {
 	
 	var _target = _modifier_class[global.MODIFICATOR_TARGET_KEY];
 	
-	var _foundModificatorToStack = addStack_handleStackableModifier_isFoundModifier(
-		_target.get_dot_modifier(_target), 
+	if(shoudStackModificators_returnFound(
+		_target.get_dot_modifier(_target),
 		_modifier_class
-	)
-	
-	if(_foundModificatorToStack) {
-		show_debug_message("STACK  modifier, but not found: " + string(_modifier_class[global.MODIFICATOR_STACK_NUMBER_KEY]));
+	)) {
+		// skip method
 		return;
 	}
 	
 	var _modifier_obj = drawModificator_returnModificatorObject(_modifier_class);
 	
-	if(obj_is_player(_modifier_class[global.MODIFICATOR_TARGET_KEY])) {
+	if(obj_is_player(_target)) {
 		ds_list_add(global.PLAYER_MODIFICATORS_OBJECTS_LIST, _modifier_obj);
 	}
 	_target.set_dot_modifier(_target, _modifier_class);
 
-	update_modifier_position(_target);
+	priv_update_modifier_position(_target);
 }
 
 // PRIVATE
 function add_speed_modifier(_modifier_class) {
 	
-	var _foundModificatorToStack = addStack_handleStackableModifier_isFoundModifier(
-		get_speed_modifier(_modifier_class[global.MODIFICATOR_TARGET_KEY]), 
-		_modifier_class
-	)
+	var _target = _modifier_class[global.MODIFICATOR_TARGET_KEY];
 	
-	if(_foundModificatorToStack) {
-		show_debug_message("STACK  modifier, but not found: " + string(_modifier_class[global.MODIFICATOR_STACK_NUMBER_KEY]));
+	if(shoudStackModificators_returnFound(
+		get_speed_modifier(_target),
+		_modifier_class
+	)) {
+		// skip method
 		return;
 	}
 	
 	var _modifier_obj = drawModificator_returnModificatorObject(_modifier_class);
 	
-	if(obj_is_player(_modifier_class[global.MODIFICATOR_TARGET_KEY])) {
+	if(obj_is_player(_target)) {
 		ds_list_add(global.PLAYER_MODIFICATORS_OBJECTS_LIST, _modifier_obj);
 	}
 	
-    _modifier_class[global.MODIFICATOR_TARGET_KEY].my_priv_speed_modifiers[? _modifier_class[global.MODIFICATOR_SKILL_NAME_ID_KEY]] = _modifier_class;
+    _target.my_priv_speed_modifiers[? _modifier_class[global.MODIFICATOR_SKILL_NAME_ID_KEY]] = 
+		_modifier_class;
+
+}
+
+// PRIVATE
+function shoudStackModificators_returnFound(_modifiersToCheck, _modifier_class) {
+	var _foundModificatorToStack = addStack_handleStackableModifier_isFoundModifier(
+		_modifiersToCheck, 
+		_modifier_class
+	)
 	
-	update_modifier_position(_modifier_class[global.MODIFICATOR_TARGET_KEY]);
+	if(_foundModificatorToStack) {
+		show_debug_message("STACK  modifier, but not found: " + string(_modifier_class[global.MODIFICATOR_STACK_NUMBER_KEY]));
+		return true;
+	}
+	return false;
 }
 
 
@@ -234,44 +243,84 @@ function getArrayOfAllModifiers_returnArray(_obj) {
 	return _arrayOfAllModifiers;
 }
 
-function getNumberOfActiveModifiers(_obj) {
-	var _speed_modifiers = get_speed_modifier(_obj);
-	var _speed_modifiers_number = ds_map_size(_speed_modifiers);
+//function getNumberOfActiveModifiers(_obj) {
+//	var _speed_modifiers = get_speed_modifier(_obj);
+//	var _speed_modifiers_number = ds_map_size(_speed_modifiers);
 	
-	var _numberOfActiveModifiers = 0;
+//	var _numberOfActiveModifiers = 0;
 	
-	_numberOfActiveModifiers += _speed_modifiers_number;
+//	_numberOfActiveModifiers += _speed_modifiers_number;
 	
-	return _numberOfActiveModifiers;
-}
+//	return _numberOfActiveModifiers;
+//}
 
 function update_modifier_position(_target_obj) {
 	var _is_player = obj_is_player(_target_obj);
 	
 	if (_is_player) {
-	    update_PLAYER_modifier_position();
+	    priv_update_modifier_position(_target_obj);
 	} else {
+		priv_update_modifier_position(_target_obj);
 		// TODO
 	    // Instancja nie znajduje się w tablicy
 	}
 }
 
-function update_PLAYER_modifier_position() {
-	var size = ds_list_size(global.PLAYER_MODIFICATORS_OBJECTS_LIST);
+function priv_update_modifier_position(_obj) {
+	var _allModifiers = getArrayOfAllModifiers_returnArray(_obj);
+	var _modifiersCounter = 0;
 	
-	var _numberOfModifiers = 0;
-	for(var _index = 0; _index < size; _index++)
-	{
-	    var _item = ds_list_find_value(global.PLAYER_MODIFICATORS_OBJECTS_LIST, _index);
-		
-		if (!instance_exists(_item)) {
-			ds_list_delete(global.PLAYER_MODIFICATORS_OBJECTS_LIST, _index);
-			_numberOfModifiers -= 1;
-			//_index -= 1;
-	    } else {
-			_item.x = global.BASE_GUI_X_POSITION + (_numberOfModifiers * 64) + (_numberOfModifiers * global.MODIFIER_SPACING)
-		}
-		
-		_numberOfModifiers += 1;
+	for (var i = 0; i < array_length(_allModifiers); i++) {
+	    var _currentModifiersMap = _allModifiers[i];
+	    _modifiersCounter = update_modifiers_position_returnNumerOfModifiers(_currentModifiersMap, _modifiersCounter);
 	}
 }
+
+function update_modifiers_position_returnNumerOfModifiers(_collectionToCheck_map, _currentNumberOfModifiers) {
+	var _numberOfModifiers = _currentNumberOfModifiers;
+	var size = ds_map_size(_collectionToCheck_map);
+	
+	var key = ds_map_find_first(_collectionToCheck_map);
+	while (key != undefined) {
+	    var value = ds_map_find_value(_collectionToCheck_map, key);
+		
+		if (value == undefined || (is_array(value) && array_length(value) == 0)) {
+		    ds_map_delete(_collectionToCheck_map, value);
+		} else {
+			
+			var _is_player = obj_is_player(value[global.MODIFICATOR_TARGET_KEY]);
+	
+			if (_is_player) {
+				// use in gui
+				value[global.MODIFICATOR_OBJECT_REFERENCE_KEY].x_offset = 
+					(_numberOfModifiers * 64);
+			} else {
+				value[global.MODIFICATOR_OBJECT_REFERENCE_KEY].x_offset = 
+					(_numberOfModifiers * 32)
+			}
+			_numberOfModifiers += 1;
+		}
+	    key = ds_map_find_next(_collectionToCheck_map, key);
+	}
+	return _numberOfModifiers;
+}
+
+//function update_PLAYER_modifier_position() {
+//	var size = ds_list_size(global.PLAYER_MODIFICATORS_OBJECTS_LIST);
+	
+//	var _numberOfModifiers = 0;
+//	for(var _index = 0; _index < size; _index++)
+//	{
+//	    var _item = ds_list_find_value(global.PLAYER_MODIFICATORS_OBJECTS_LIST, _index);
+		
+//		if (!instance_exists(_item)) {
+//			ds_list_delete(global.PLAYER_MODIFICATORS_OBJECTS_LIST, _index);
+//			_numberOfModifiers -= 1;
+//			//_index -= 1;
+//	    } else {
+//			_item.x = global.BASE_GUI_X_POSITION + (_numberOfModifiers * 64) + (_numberOfModifiers * global.MODIFIER_SPACING)
+//		}
+		
+//		_numberOfModifiers += 1;
+//	}
+//}

@@ -1,9 +1,23 @@
 global.LAYERS_INSTANCES = "Instances";
+global.LAYERS_INVISIBLE = "Invisible";
 
 // Inicjalizacja globalnej mapy
 global.MY_ROOM_SPEED = room_speed;
 global.MY_EMPTY_FUNCTION = function() {};
 global.MY_EMPTY_FUNCTION_WITH_2_PARAMS = function(_obj, _source) {};
+
+
+global.PAUSE_MANAGER = undefined;
+
+function getPauseManager() {
+	if(global.PAUSE_MANAGER == undefined) {
+		global.PAUSE_MANAGER = instance_create_layer(0, 0, global.LAYERS_INVISIBLE, obj_pause_manager);
+	}
+	return global.PAUSE_MANAGER;
+}
+
+
+window_set_fullscreen(false);
 
 global._my_param_map = ds_map_create();
 
