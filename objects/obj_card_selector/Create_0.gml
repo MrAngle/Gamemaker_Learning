@@ -32,10 +32,12 @@ for(var i= 0; i < cardsNumbers; i++) {
 	card_x = (i * widthPerCard); // + (i * widthOffSet);
 	
 	card[i] = instance_create_layer(cam_x + card_x, cam_y + view_height - heightCard, global.LAYERS_PAUSE_GUI, obj_card);
-	if(i % 2 == 0 ) {
+	if(i % 2 == 0) {
 		card[i].sprite_index = sprite_card_fireball_1;
 	} else {
 		card[i].sprite_index = sprite_card_lighting_1;
 	}
+	card[i].depth -= 10;
+	card[i].activeWidth = widthPerCard;
 }
 

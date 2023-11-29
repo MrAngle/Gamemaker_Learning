@@ -1,6 +1,7 @@
 global.LAYERS_INSTANCES = "Instances";
 global.LAYERS_INVISIBLE = "Invisible";
 global.LAYERS_PAUSE_GUI = "PauseGUI";
+global.LAYERS_PAUSE_GUI_DESCRIPTIONS = "PauseGUI_Descriptions";
 
 // Inicjalizacja globalnej mapy
 global.MY_ROOM_SPEED = room_speed;
@@ -16,7 +17,8 @@ function getPauseManager() {
 	return global.PAUSE_MANAGER;
 }
 
-window_set_fullscreen(false);
+global.fullsreen = false;
+
 
 global._my_param_map = ds_map_create();
 
