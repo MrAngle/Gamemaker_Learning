@@ -34,6 +34,13 @@ function add_params_for_new_obj(obj, _constr_params) {
     //global._my_param_map[? obj_name] = _constr_params;
 }
 
+//var test = [];
+// test[0] = _modificator;
+//add_params_byName_for_new_obj(global.CONSTRUCTOR_PARAM_MODIFIERS, test);
+
+//modificator = get_params_byName_from_global_map(global.CONSTRUCTOR_PARAM_MODIFIERS)[0];
+
+
 function add_params_byName_for_new_obj(key_name, _constr_params) {
 	//show_debug_message("DODAJE DO MAPY: " + obj_name)
     global._my_param_map[? key_name] = _constr_params;
@@ -75,6 +82,7 @@ function get_params_byName_from_global_map(key_name) {
 	if (ds_map_exists(global._my_param_map, key_name)) {
         // Pobierz wartość z mapy
         var result = ds_map_find_value(global._my_param_map, key_name);
+		 ds_map_delete(global._my_param_map, key_name); 
         return result;
     } else {
         //show_debug_message("NIE MA ELEMENTU W MAPIE")

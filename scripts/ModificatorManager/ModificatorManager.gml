@@ -82,31 +82,6 @@ function processAuraModifierPerFrame(_modifier, _modifiers) {
 function processAuraModifiersPerFrame(_modifier, _modifiers) {
 }
 
-
-
-//function processTimeModifiersPerFrame(_modifiers) {
-//    if (is_undefined(_modifiers) || 
-//		!ds_exists(_modifiers, ds_type_map) ||
-//		ds_map_size(_modifiers) < 1) {
-//        // Debug message
-//        //show_debug_message("Mapa modyfikatorów prędkości nie istnieje lub nie jest zainicjowana.");
-//        //// Jeśli nie istnieje, wyjdź z funkcji
-//        return;
-//    }
-	
-//    for (var k = ds_map_find_first(_modifiers); !is_undefined(k); k = ds_map_find_next(_modifiers, k)) {
-//		var _modifier = _modifiers[? k];
-//        var _key = k;
-		
-//		var _shouldDelete = processTimeModifierPerFrame2_returnShouldDelete(_modifier, _modifiers)
-		
-//		if(_shouldDelete) {
-//			ds_map_delete(_modifiers, _key);
-//		}
-//    }
-//}
-
-
 // PUBLIC
 function add_new_Modifier(_modificator_class) {
 	
@@ -304,23 +279,3 @@ function update_modifiers_position_returnNumerOfModifiers(_collectionToCheck_map
 	}
 	return _numberOfModifiers;
 }
-
-//function update_PLAYER_modifier_position() {
-//	var size = ds_list_size(global.PLAYER_MODIFICATORS_OBJECTS_LIST);
-	
-//	var _numberOfModifiers = 0;
-//	for(var _index = 0; _index < size; _index++)
-//	{
-//	    var _item = ds_list_find_value(global.PLAYER_MODIFICATORS_OBJECTS_LIST, _index);
-		
-//		if (!instance_exists(_item)) {
-//			ds_list_delete(global.PLAYER_MODIFICATORS_OBJECTS_LIST, _index);
-//			_numberOfModifiers -= 1;
-//			//_index -= 1;
-//	    } else {
-//			_item.x = global.BASE_GUI_X_POSITION + (_numberOfModifiers * 64) + (_numberOfModifiers * global.MODIFIER_SPACING)
-//		}
-		
-//		_numberOfModifiers += 1;
-//	}
-//}

@@ -31,7 +31,27 @@ for(var i= 0; i < cardsNumbers; i++) {
 	
 	card_x = (i * widthPerCard); // + (i * widthOffSet);
 	
-	card[i] = instance_create_layer(cam_x + card_x, cam_y + view_height - heightCard, global.LAYERS_PAUSE_GUI, obj_card);
+	
+	var skillToCreate = obj_fireball_attack_1;
+	if(i % 2 == 0) {
+		skillToCreate = obj_fireball_attack_1;
+	} else {
+		skillToCreate = obj_lighting_attack_1;
+	}
+	
+	//var skillToCreate = obj_fireball_attack_1;
+	var customConstructorParams = {
+		my_priv_create_in_description_mode: true
+	};
+	add_params_byName_for_new_obj(skillToCreate, customConstructorParams);
+	var _skillReference = instance_create_layer(-999999, -999999, global.LAYERS_INVISIBLE, skillToCreate);
+	
+	
+	var constrParams = [];
+	constrParams[0] = _skillReference;
+	add_params_byName_for_new_obj(global.CONSTRUCTOR_PARAMS_SKILL_CARD, constrParams);
+	
+	card[i] = instance_create_layer(cam_x + card_x, cam_y + view_height - heightCard, global.LAYERS_PAUSE_GUI, obj_skill_card);
 	if(i % 2 == 0) {
 		card[i].sprite_index = sprite_card_fireball_1;
 	} else {

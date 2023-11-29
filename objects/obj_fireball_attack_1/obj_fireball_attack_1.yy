@@ -16,8 +16,8 @@
     "path": "folders/Objects/Game/Skills/Attacks/Fire/fireball_attack_1.yy",
   },
   "parentObjectId": {
-    "name": "abst_damageable",
-    "path": "objects/abst_damageable/abst_damageable.yy",
+    "name": "abst_fire_attack_skill",
+    "path": "objects/abst_fire_attack_skill/abst_fire_attack_skill.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,

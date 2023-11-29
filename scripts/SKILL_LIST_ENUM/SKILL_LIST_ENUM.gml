@@ -10,7 +10,8 @@ enum MY_SKILL_LIST {
 	
 	// ATTACKS
 	WIND_1,
-	FIREBALL_1
+	FIREBALL_1,
+	LIGHTING_1
 }
 
 
@@ -22,3 +23,4 @@ global.SKILL_NAMES[? MY_SKILL_LIST.NOT_DEFINED] = "Hmm... I dont know";
 global.SKILL_NAMES[? MY_SKILL_LIST.WIND_1] = "Wind basic";
 global.SKILL_NAMES[? MY_SKILL_LIST.AIMING] = "Aiming";
 global.SKILL_NAMES[? MY_SKILL_LIST.FIREBALL_1] = "Fireball";
+global.SKILL_NAMES[? MY_SKILL_LIST.LIGHTING_1] = "Lighting ball";

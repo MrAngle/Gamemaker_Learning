@@ -2,7 +2,7 @@
 // // https://help.yoyogames.com/hc/en-us/articles/360005277377
 function my_INHERITENCE_skill(_obj)
 {
-	var _received_params = get_params_from_global_map(_obj.object_index);
+	var _received_params = get_params_byName_from_global_map(_obj.object_index);
 
 	if (is_undefined(_received_params)) {
 	    _received_params = {};
@@ -35,13 +35,18 @@ function my_assign_skill_global_param(_object_skill, _global_param_skill) {
 		_object_skill.my_skill_effects_function = _global_param_skill.my_skill_effects_function;
     if (variable_struct_exists(_global_param_skill, "my_skill_name"))
 		_object_skill.my_skill_name = _global_param_skill.my_skill_name;
-
+    if (variable_struct_exists(_global_param_skill, "my_skill_description"))
+		_object_skill.my_skill_description = _global_param_skill.my_skill_description;
+	if (variable_struct_exists(_global_param_skill, "my_priv_create_in_description_mode"))
+		_object_skill.my_priv_create_in_description_mode = _global_param_skill.my_priv_create_in_description_mode;
 }
 
 function my_CONSTRUCTOR_default_skill_init(_instance) {
     _instance.my_skill_type = [MY_SKILL_TYPE.PHYSICAL];
     _instance.my_skill_effects_function = function(_affected_object) {};
     _instance.my_skill_name = MY_SKILL_LIST.NOT_DEFINED;
+    _instance.my_skill_description = "Description";
+    _instance.my_priv_create_in_description_mode = false;
 }
 
 function my_AddSkillType(instance, skillType) {
