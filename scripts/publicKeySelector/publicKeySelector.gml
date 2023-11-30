@@ -6,7 +6,16 @@ function getKeySelector() {
 	return global.KEY_SELECTOR;
 }
 
+function getSkill(keyIndexEnum) {
+	return getKeySelector().keys[keyIndexEnum].skillRef
+}
+
+
+
 enum KEYS_INDEX {
     Q,
     W,
+	E,
+	R,
+	SPACE
 }
