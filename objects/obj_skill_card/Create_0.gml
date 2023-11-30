@@ -3,8 +3,6 @@ skillRef = get_params_byName_from_global_map(global.CONSTRUCTOR_PARAMS_SKILL_CAR
 
 event_inherited();
 
-
-
 functionOnMouseEnter = function(_self) {
 	with(_self) {
 		if (functionIsOnActivePart_returnBoolean(_self)) {
@@ -14,8 +12,23 @@ functionOnMouseEnter = function(_self) {
 			view_height = camera_get_view_height(view_camera[0]);
 			view_width = camera_get_view_width(view_camera[0]);
 	
-			createDescriptionCard(x + (sprite_width), y - (sprite_height), self, _self.skillRef);
+			createDescriptionCard(x + (sprite_width), y - (sprite_height / self.image_yscale), self, _self.skillRef);
 		}
+	}
+}
+
+functionOnMouseClick = function(_self) {
+	with(_self) {
+		//if (functionIsOnActivePart_returnBoolean(_self)) {
+			cam_x = camera_get_view_x(view_camera[0]);
+			cam_y = camera_get_view_y(view_camera[0]);
+
+			view_height = camera_get_view_height(view_camera[0]);
+			view_width = camera_get_view_width(view_camera[0]);
+			createDescriptionCardOnCenter(self, _self.skillRef);
+			_self.isSelected = true;
+			//createDescriptionCard(x + (sprite_width), y - (sprite_height / self.image_yscale) , self, _self.skillRef);
+		//}
 	}
 }
 

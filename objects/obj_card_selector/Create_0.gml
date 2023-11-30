@@ -1,24 +1,19 @@
 // Pobierz pozycję kamery
-widthOffSet = 10;
 
 cardsNumbers = 8;
 
-heightCard = 329;
-widthCard = 245;
+heightCard = (329/2) * getZoomFactor();
+widthCard = (245/2) * getZoomFactor();
 //widthCard = 100;
-
-
 
 cam_x = camera_get_view_x(view_camera[0]);
 cam_y = camera_get_view_y(view_camera[0]);
-
-
 
 // Pobierz wysokość widoku kamery
 view_height = camera_get_view_height(view_camera[0]);
 view_width = camera_get_view_width(view_camera[0]);
 
-widthPerCard = (view_width - widthCard) / (cardsNumbers);
+widthPerCard = ((view_width - widthCard) / (cardsNumbers));
 //if(widthPerCard < widthCard) {
 //	widthPerCard = widthPerCard - (widthCard - widthPerCard)
 //}
@@ -57,6 +52,11 @@ for(var i= 0; i < cardsNumbers; i++) {
 	} else {
 		card[i].sprite_index = sprite_card_lighting_1;
 	}
+	
+	card[i].image_xscale = 0.50;
+	card[i].image_yscale = 0.50;
+	card[i].scale = 0.50;
+	scaleObjectBasedOnGlobalSettings(card[i]);
 	card[i].depth -= 10;
 	card[i].activeWidth = widthPerCard;
 }

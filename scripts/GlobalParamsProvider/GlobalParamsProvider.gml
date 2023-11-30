@@ -8,15 +8,6 @@ global.MY_ROOM_SPEED = room_speed;
 global.MY_EMPTY_FUNCTION = function() {};
 global.MY_EMPTY_FUNCTION_WITH_2_PARAMS = function(_obj, _source) {};
 
-
-global.PAUSE_MANAGER = undefined;
-function getPauseManager() {
-	if(global.PAUSE_MANAGER == undefined) {
-		global.PAUSE_MANAGER = instance_create_layer(0, 0, global.LAYERS_INVISIBLE, obj_pause_manager);
-	}
-	return global.PAUSE_MANAGER;
-}
-
 global.fullsreen = false;
 
 

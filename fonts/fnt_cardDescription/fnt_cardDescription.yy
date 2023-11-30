@@ -10,7 +10,7 @@
   "canGenerateBitmap": true,
   "charset": 0,
   "first": 0,
-  "fontName": "particle_editor_icon_font",
+  "fontName": "ai_assistant_icon_font",
   "glyphOperations": 0,
   "glyphs": {
     "32": {"character":32,"h":18,"offset":0,"shift":8,"w":8,"x":2,"y":2,},

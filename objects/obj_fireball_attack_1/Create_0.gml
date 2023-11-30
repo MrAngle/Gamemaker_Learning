@@ -13,7 +13,7 @@ event_inherited();
 my_skill_name = MY_SKILL_LIST.FIREBALL_1;
 
 if(self.my_priv_create_in_description_mode) {
-	show_debug_message("Utworzono w trybie my_priv_create_in_description_mode");
+	//show_debug_message("Utworzono w trybie my_priv_create_in_description_mode");
 
 	my_skill_description = "Deals damage ranging from " + string(self.my_min_damage) + " to " + 
 			string(self.my_max_damage) + ". Upon hitting the target, applies a burning modifier."

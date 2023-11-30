@@ -1,5 +1,7 @@
 descriptionCard = undefined;
 activeWidth = sprite_width;
+isSelected = false;
+scale = 1;
 
 functionIsOnActivePart_returnBoolean = function(_self) {
 	with(_self) {
@@ -13,6 +15,8 @@ functionIsOnActivePart_returnBoolean = function(_self) {
 functionOnMouseEnter = function(_self) {
 }
 
+functionOnMouseClick = function(_self) {
+}
 
 functionByFrameStep = function(_self) {
 }
