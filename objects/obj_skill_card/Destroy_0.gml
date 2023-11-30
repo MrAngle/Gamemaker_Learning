@@ -1,2 +1,2 @@
-with(self.skillRef)
+with(self.skillObjRef)
 {instance_destroy();}

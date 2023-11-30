@@ -1,7 +1,7 @@
 {
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
-  "name": "abstr_key",
+  "name": "abst_skill_key",
   "eventList": [
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
   ],
@@ -11,7 +11,10 @@
     "name": "Keys",
     "path": "folders/Objects/Game/Game_UI/KeySelector/Keys.yy",
   },
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "abstr_key",
+    "path": "objects/abstr_key/abstr_key.yy",
+  },
   "persistent": false,
   "physicsAngularDamping": 0.1,
   "physicsDensity": 0.5,
