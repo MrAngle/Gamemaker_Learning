@@ -2,7 +2,7 @@ function custom_moveable_init(_instance) {
     _instance.MY_IS_TYPE_MOVEABLE = true;
     _instance.my_is_moveable = true;
     _instance.my_current_direction = MY_Direction.RIGHT;
-    _instance.my_priv_base_speed = 2;
+    _instance.my_priv_base_speed = 6;
 }
 
 

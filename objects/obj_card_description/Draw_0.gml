@@ -20,3 +20,5 @@ draw_text_ext(x + sprite_width / 2, y + offset_nazwy, nazwa_karty,
 draw_set_font(getFontBasedOnZoom("fnt_cardDescription"));
 draw_set_colour(c_black);
 draw_text_ext(x + sprite_width/2, y + offset_opisu, opis_karty, przerwa_miedzy_liniami , szerokosc_linii);
+
+draw_set_font(noone);

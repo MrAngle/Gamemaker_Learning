@@ -73,6 +73,7 @@
     {"name":"32x32_SandStoneDungeon","order":1,"path":"folders/Tile Sets/Base_Tiles/32x32_SandStoneDungeon.yy",},
     {"name":"My_Tiles","order":4,"path":"folders/Tile Sets/My_Tiles.yy",},
     {"name":"Timelines","order":11,"path":"folders/Timelines.yy",},
+    {"name":"Turn","order":16,"path":"folders/Objects/Game/Turn.yy",},
   ],
   "ResourceOrderSettings": [
     {"name":"Spr_Gate_02","order":4,"path":"sprites/Spr_Gate_02/Spr_Gate_02.yy",},
@@ -259,6 +260,7 @@
     {"name":"sprite_q_button_68x68","order":7,"path":"sprites/sprite_q_button_68x68/sprite_q_button_68x68.yy",},
     {"name":"spr_baddie_idle69","order":2,"path":"sprites/spr_baddie_idle69/spr_baddie_idle69.yy",},
     {"name":"ModificatorClass","order":3,"path":"scripts/ModificatorClass/ModificatorClass.yy",},
+    {"name":"public_turn_manager","order":1,"path":"scripts/public_turn_manager/public_turn_manager.yy",},
     {"name":"spr_youtube","order":98,"path":"sprites/spr_youtube/spr_youtube.yy",},
     {"name":"Spr_Item_coin_02","order":15,"path":"sprites/Spr_Item_coin_02/Spr_Item_coin_02.yy",},
     {"name":"snd_powerup","order":1,"path":"sounds/snd_powerup/snd_powerup.yy",},

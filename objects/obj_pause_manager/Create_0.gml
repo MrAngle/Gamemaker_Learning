@@ -11,9 +11,11 @@ stopTheGame = function(_self) {
 
 startTheGame = function(_self) {
 	_self.privPaused = false;
+	startNewTurn();
 	instance_activate_all();
 	
 	resumeButton = undefined;
+	
 }
 
 privStopGameWithSnapshot = function(_self) {

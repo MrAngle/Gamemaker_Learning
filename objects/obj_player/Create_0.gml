@@ -31,8 +31,6 @@ event_inherited();
 my_GLOBAL_add_player(object_index)
 my_set_max_health(object_index, 1000);
 my_load_direction_arrow_gui(object_index);
-loadSettings();
-initGuiManager();
 
 // Initialize coins value at 0
 coins = 0;

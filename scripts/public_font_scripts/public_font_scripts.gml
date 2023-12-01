@@ -10,6 +10,7 @@ ds_map_add(global.fontMap, "fnt_cardDescription", fnt_cardDescription);
 ds_map_add(global.fontMap, "fnt_cardDescription_big", fnt_cardDescription_big);
 ds_map_add(global.fontMap, "fnt_cardTitle", fnt_cardTitle);
 ds_map_add(global.fontMap, "fnt_cardTitle_big", fnt_cardTitle_big);
+ds_map_add(global.fontMap, "fnt_hud", fnt_hud);
 
 function getFontBasedOnZoom(_fontName) {
 	var zoomLevel = getZoomLevel(); // Funkcja, która zwraca aktualny poziom zoomu
@@ -23,5 +24,12 @@ function getFontBasedOnZoom(_fontName) {
             break;
     }
 	
+	return global.fontMap[? fontKey]; // Zwraca odpowiedni font z mapy;
+}
+
+function getGUIFont(_fontName) {
+	var zoomLevel = getZoomLevel(); // Funkcja, która zwraca aktualny poziom zoomu
+    var fontKey = _fontName;
+
 	return global.fontMap[? fontKey]; // Zwraca odpowiedni font z mapy;
 }

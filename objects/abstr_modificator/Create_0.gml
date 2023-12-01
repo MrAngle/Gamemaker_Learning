@@ -126,6 +126,7 @@ drawStackNumber = function(_self, _font) {
 		
 		draw_set_colour(c_white); // Ustaw kolor tekstu na biały
 		draw_text(x_pos, y_pos - text_height, number_to_draw);
+		//draw_set_font(noone);
 	}
 }
 
