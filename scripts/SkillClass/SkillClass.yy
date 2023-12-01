@@ -1,7 +1,7 @@
 {
   "resourceType": "GMScript",
   "resourceVersion": "1.0",
-  "name": "SkillScript",
+  "name": "SkillClass",
   "isCompatibility": false,
   "isDnD": false,
   "parent": {

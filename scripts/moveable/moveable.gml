@@ -152,11 +152,12 @@ function my_start_move_moveable_obj(_object)
 
 function my_calculate_offset(_direction_enum, _invoker_width)
 {
+	var _offset_factor = 0.4;
     var angle_deg = my_calculate_direction_value(_direction_enum);
     var angle_rad = degtorad(angle_deg);  // Konwersja ze stopni na radiany
 
-    var offsetX = _invoker_width * cos(angle_rad);
-    var offsetY = -_invoker_width * sin(angle_rad);  // Minus, ponieważ w wielu systemach współrzędnych wartość y rośnie w dół ekranu
+    var offsetX = _invoker_width * _offset_factor  * cos(angle_rad);
+    var offsetY = -_invoker_width * _offset_factor  * sin(angle_rad);  // Minus, ponieważ w wielu systemach współrzędnych wartość y rośnie w dół ekranu
 
     return [offsetX, offsetY];
 }

@@ -29,34 +29,34 @@ function my_addSkillAction(_skill_list, _skill) {
 }
 
 
-function my_SkillComparator(a, b) {
-    if (a.skill_phase_enum < b.skill_phase_enum) return -1;
-    if (a.skill_phase_enum > b.skill_phase_enum) return 1;
+//function my_SkillComparator(a, b) {
+//    if (a.skill_phase_enum < b.skill_phase_enum) return -1;
+//    if (a.skill_phase_enum > b.skill_phase_enum) return 1;
 
-    // Jeśli faza jest taka sama, porównaj priorytet
-    if (a.priority < b.priority) return -1;
-    if (a.priority > b.priority) return 1;
+//    // Jeśli faza jest taka sama, porównaj priorytet
+//    if (a.priority < b.priority) return -1;
+//    if (a.priority > b.priority) return 1;
 
-    return 0; // jeśli obie umiejętności są takie same
-}
+//    return 0; // jeśli obie umiejętności są takie same
+//}
 
 
-function my_SortSkillList(skillList) {
-    var size = ds_list_size(skillList);
+//function my_SortSkillList(skillList) {
+//    var size = ds_list_size(skillList);
     
-    for (var i = 0; i < size - 1; i++) {
-        for (var j = i + 1; j < size; j++) {
-            var skillA = skillList[| i];
-            var skillB = skillList[| j];
+//    for (var i = 0; i < size - 1; i++) {
+//        for (var j = i + 1; j < size; j++) {
+//            var skillA = skillList[| i];
+//            var skillB = skillList[| j];
 
-            if (my_SkillComparator(skillA, skillB) > 0) {
-                // Swap items manually
-                skillList[| i] = skillB;
-                skillList[| j] = skillA;
-            }
-        }
-    }
-}
+//            if (my_SkillComparator(skillA, skillB) > 0) {
+//                // Swap items manually
+//                skillList[| i] = skillB;
+//                skillList[| j] = skillA;
+//            }
+//        }
+//    }
+//}
 
 function my_ManageSkillAction(_skill_obj, _target_obj, _skill_action_struct) {
 	switch(_skill_action_struct.skill_phase_enum) {

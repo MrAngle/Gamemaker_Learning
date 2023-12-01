@@ -14,3 +14,21 @@ if(self.my_priv_create_in_description_mode) {
 on_destroy_sprite = sprite_default_on_destroy;
 	on_collision_function = function(_self) {
 }
+
+invokerHittableChecker_returnTrueIfShouldProcess = function(_self, _target) {
+	with(_self) {
+		if(_self.my_invoker == undefined) {
+			return true;
+		}
+		if(_self.my_invoker == _target && _self.my_invoker_not_hittable_counter > 0) {
+			return false;
+		}
+		return true;
+	}
+}
+
+countInvokerHittableStartProtection = function(_self) {
+	with(_self) {
+		 _self.my_invoker_not_hittable_counter -= 1;
+	}
+}

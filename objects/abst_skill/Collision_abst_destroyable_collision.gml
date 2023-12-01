@@ -1,3 +1,9 @@
+var invokerHasStartProtection = !invokerHittableChecker_returnTrueIfShouldProcess(self, other);
+if(invokerHasStartProtection) {
+	return;
+}
+
+
 var shouldProcess = my_SHOULD_PROCESS_ActionBasedOn_HIT_TIMER(self, other);
 
 if(!shouldProcess) {

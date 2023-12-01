@@ -384,7 +384,7 @@
     {"name":"spr_player_walk_up","order":3,"path":"sprites/spr_player_walk_up/spr_player_walk_up.yy",},
     {"name":"obj_chest","order":4,"path":"objects/obj_chest/obj_chest.yy",},
     {"name":"sprite_card_fireball_1","order":1,"path":"sprites/sprite_card_fireball_1/sprite_card_fireball_1.yy",},
-    {"name":"SkillScript","order":5,"path":"scripts/SkillScript/SkillScript.yy",},
+    {"name":"SkillClass","order":5,"path":"scripts/SkillClass/SkillClass.yy",},
     {"name":"obj_enemy_zombie1","order":5,"path":"objects/obj_enemy_zombie1/obj_enemy_zombie1.yy",},
     {"name":"MY_MOCKED_COLLISION_MASK_2","order":3,"path":"sprites/MY_MOCKED_COLLISION_MASK_2/MY_MOCKED_COLLISION_MASK_2.yy",},
     {"name":"spr_exit","order":20,"path":"sprites/spr_exit/spr_exit.yy",},
