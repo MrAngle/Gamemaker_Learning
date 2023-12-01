@@ -2,6 +2,9 @@ global.LAYERS_INSTANCES = "Instances";
 global.LAYERS_INVISIBLE = "Invisible";
 global.LAYERS_PAUSE_GUI = "PauseGUI";
 global.LAYERS_PAUSE_GUI_DESCRIPTIONS = "PauseGUI_Descriptions";
+global.LAYERS_MODIFIERS = "Modifiers";
+
+
 
 // Inicjalizacja globalnej mapy
 global.MY_ROOM_SPEED = room_speed;

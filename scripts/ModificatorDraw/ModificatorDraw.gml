@@ -1,4 +1,4 @@
-global.MODIFIERS_LAYER = "Modifiers";
+
 global.CONSTRUCTOR_PARAM_MODIFIERS = "CONSTRUCTOR_PARAM_MODIFIERS";
 
 
@@ -24,16 +24,16 @@ function my_DESTRUCTOR_default_modificator_draw_manager_init(_instance) {
 function drawModificator_returnModificatorObject(_modificator) {
 	//show_debug_message("drawModificator2 wywołana: " + string(current_time));
 	
-	var test = [];
-	 test[0] = _modificator;
+	var constructorParam = [];
+	 constructorParam[0] = _modificator;
 
-	add_params_byName_for_new_obj(global.CONSTRUCTOR_PARAM_MODIFIERS, test);
+	add_params_byName_for_new_obj(global.CONSTRUCTOR_PARAM_MODIFIERS, constructorParam);
 
 	var _mod_instance;
 	if(obj_is_player(_modificator[global.MODIFICATOR_TARGET_KEY])) {
-		_mod_instance = instance_create_layer(0, 0, global.MODIFIERS_LAYER, obj_modificator_player);
+		_mod_instance = instance_create_layer(0, 0, global.LAYERS_MODIFIERS, obj_modificator_player);
 	} else {
-		_mod_instance = instance_create_layer(0, 0, global.MODIFIERS_LAYER, obj_modificator_enemy);
+		_mod_instance = instance_create_layer(0, 0, global.LAYERS_MODIFIERS, obj_modificator_enemy);
 	}
 
 	_mod_instance.sprite_index = _modificator[global.MODIFICATOR_SPRITE_KEY];

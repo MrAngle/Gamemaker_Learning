@@ -1,0 +1,1 @@
+initCamera(global.players[0]);

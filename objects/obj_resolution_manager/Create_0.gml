@@ -17,6 +17,9 @@ obj_Player = undefined;
 original_width = 1280; // Przykładowa początkowa szerokość
 original_height = 720; // Przykładowa początkowa wysokość
 
+current_width = original_width;
+current_height = original_height;
+
 zoomFactor = 1;
 
 changeResolution = function (_self) {
@@ -36,14 +39,14 @@ changeResolution = function (_self) {
             //    break;
         }
 
-        var newWidth = original_width * zoomFactor;
-        var newHeight = original_height * zoomFactor;
+        current_width = original_width * zoomFactor;
+        current_height = original_height * zoomFactor;
         
-        camera_set_view_size(cam, newWidth, newHeight);
+        camera_set_view_size(cam, current_width, current_height);
 
         // Opcjonalnie, dostosuj pozycję kamery
-        var camX = camera_get_view_x(cam) - (newWidth - original_width) / 2;
-        var camY = camera_get_view_y(cam) - (newHeight - original_height) / 2;
+        var camX = camera_get_view_x(cam) - (current_width - original_width) / 2;
+        var camY = camera_get_view_y(cam) - (current_height - original_height) / 2;
         camera_set_view_pos(cam, camX, camY);
     }
 }

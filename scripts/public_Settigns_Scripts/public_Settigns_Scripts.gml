@@ -12,6 +12,14 @@ function getZoomFactor() {
 	return global.RESOLUTION_MANAGER.zoomFactor;
 }
 
+function getResolutionManager() {
+	if(global.RESOLUTION_MANAGER == undefined) {
+		loadSettings();
+	}
+	return global.RESOLUTION_MANAGER;
+}
+
+
 function getZoomLevel() {
 	var zoom = getZoomFactor();
 	switch (zoom) {
@@ -37,6 +45,8 @@ function loadSettings() {
 	
 	global.RESOLUTION_MANAGER.obj_Player = global.players[0];
 }
+
+
 
 function publicChangeResolution() {
 	global.RESOLUTION_MANAGER.changeResolution(global.RESOLUTION_MANAGER);

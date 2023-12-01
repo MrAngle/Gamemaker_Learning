@@ -26,7 +26,7 @@ my_object_specific_sprites_init_function = custom_sprites_init;
 //my_object_moveable_init_function(self)
 
 event_inherited();
-
+//view_camera[0] = camera_create();
 // INIT
 my_GLOBAL_add_player(object_index)
 my_set_max_health(object_index, 1000);
