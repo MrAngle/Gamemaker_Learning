@@ -2,9 +2,7 @@
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
   "name": "obj_enemy_parent",
-  "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":2,"eventType":3,"isDnD":false,},
-  ],
+  "eventList": [],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
@@ -12,8 +10,8 @@
     "path": "folders/Objects/Game/Enemies.yy",
   },
   "parentObjectId": {
-    "name": "abst_destroyable_collision",
-    "path": "objects/abst_destroyable_collision/abst_destroyable_collision.yy",
+    "name": "abst_destroyable_collision_movable",
+    "path": "objects/abst_destroyable_collision_movable/abst_destroyable_collision_movable.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,

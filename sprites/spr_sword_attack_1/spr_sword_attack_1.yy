@@ -1,7 +1,7 @@
 {
   "resourceType": "GMSprite",
   "resourceVersion": "1.0",
-  "name": "spr_sword_attack",
+  "name": "spr_sword_attack_1",
   "bbox_bottom": 63,
   "bbox_left": 0,
   "bbox_right": 90,
@@ -28,14 +28,14 @@
   "nineSlice": null,
   "origin": 4,
   "parent": {
-    "name": "Player",
-    "path": "folders/Sprites/Player.yy",
+    "name": "Attacks",
+    "path": "folders/Sprites/Skills/Attacks.yy",
   },
   "preMultiplyAlpha": false,
   "sequence": {
     "resourceType": "GMSequence",
     "resourceVersion": "1.4",
-    "name": "spr_sword_attack",
+    "name": "spr_sword_attack_1",
     "autoRecord": true,
     "backdropHeight": 768,
     "backdropImageOpacity": 0.5,
@@ -57,10 +57,10 @@
     "timeUnits": 1,
     "tracks": [
       {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","builtinName":0,"events":[],"inheritsTrackColour":true,"interpolation":1,"isCreationTrack":false,"keyframes":{"resourceType":"KeyframeStore<SpriteFrameKeyframe>","resourceVersion":"1.0","Keyframes":[
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"b1da30c7-20b1-4d5e-8224-92462e40f510","path":"sprites/spr_sword_attack/spr_sword_attack.yy",},},},"Disabled":false,"id":"d269af1b-f682-46f2-9f28-3e601395ec0a","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"5bbd839d-32cb-421e-892a-4e1decf8935e","path":"sprites/spr_sword_attack/spr_sword_attack.yy",},},},"Disabled":false,"id":"a80d6fad-50da-437a-8dfd-ae2c5835c23a","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"4acdbcb3-42e1-4e21-8be7-068f2c64102b","path":"sprites/spr_sword_attack/spr_sword_attack.yy",},},},"Disabled":false,"id":"1ebfb72a-2ede-4ec0-aac3-0f4a51c3bfa3","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
-            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"781bc041-fd9a-40be-a87d-4bee5e2e3106","path":"sprites/spr_sword_attack/spr_sword_attack.yy",},},},"Disabled":false,"id":"c292849f-e30a-4dd3-87bc-7b79b6d36f0e","IsCreationKey":false,"Key":3.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"b1da30c7-20b1-4d5e-8224-92462e40f510","path":"sprites/spr_sword_attack_1/spr_sword_attack_1.yy",},},},"Disabled":false,"id":"d269af1b-f682-46f2-9f28-3e601395ec0a","IsCreationKey":false,"Key":0.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"5bbd839d-32cb-421e-892a-4e1decf8935e","path":"sprites/spr_sword_attack_1/spr_sword_attack_1.yy",},},},"Disabled":false,"id":"a80d6fad-50da-437a-8dfd-ae2c5835c23a","IsCreationKey":false,"Key":1.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"4acdbcb3-42e1-4e21-8be7-068f2c64102b","path":"sprites/spr_sword_attack_1/spr_sword_attack_1.yy",},},},"Disabled":false,"id":"1ebfb72a-2ede-4ec0-aac3-0f4a51c3bfa3","IsCreationKey":false,"Key":2.0,"Length":1.0,"Stretch":false,},
+            {"resourceType":"Keyframe<SpriteFrameKeyframe>","resourceVersion":"1.0","Channels":{"0":{"resourceType":"SpriteFrameKeyframe","resourceVersion":"1.0","Id":{"name":"781bc041-fd9a-40be-a87d-4bee5e2e3106","path":"sprites/spr_sword_attack_1/spr_sword_attack_1.yy",},},},"Disabled":false,"id":"c292849f-e30a-4dd3-87bc-7b79b6d36f0e","IsCreationKey":false,"Key":3.0,"Length":1.0,"Stretch":false,},
           ],},"modifiers":[],"spriteId":null,"trackColour":0,"tracks":[],"traits":0,},
     ],
     "visibleRange": null,

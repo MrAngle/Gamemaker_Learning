@@ -4,4 +4,3 @@ if (my_hit_animation_duration_counter > 0) {
 }
 
 processAllModifiersPerFrame(self);
-//update_speed_modifiers(self);
