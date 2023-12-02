@@ -20,18 +20,11 @@ function MOVE_STRATEGY_goToNearestInRadius_PER_FRAME(_obj, _target_obj, _radius_
 			return;
 		}
 		
-				
-		var _collision_width = sprite_get_width(_obj.targetEnemyRef.sprite_index);
-		var _collision_height = sprite_get_height(_obj.targetEnemyRef.sprite_index);
-		var _collision_offset = ( _collision_width + _collision_height ) / 4; // Średnia z połowy szerokości i wysokości
-
-		var calculatedStopRadius = _stopDistance_real + _collision_offset;
-		
 		var distance_to_enemy = point_distance(x, y, _obj.targetEnemyRef.x, _obj.targetEnemyRef.y);
 
 		if (distance_to_enemy <= detection_radius)
 		{
-		    if (distance_to_enemy > calculatedStopRadius)
+		    if (distance_to_enemy > _stopDistance_real)
 		    {
 		        // Oblicz kierunek do najbliższego wroga
 		        var dir = point_direction(x, y, _obj.targetEnemyRef.x, _obj.targetEnemyRef.y);
@@ -60,47 +53,62 @@ function MOVE_STRATEGY_goToNearestInRadius_PER_FRAME(_obj, _target_obj, _radius_
 }
 
 
-function ATTACK_STRATEGY_attackTargetWithSkill_PER_FRAME(_self, _isTargetReached, _skill_obj) {
+function ATTACK_STRATEGY_attackTargetWithSkill_PER_FRAME(_self, _target, _isTargetReached, _skill_obj) {
 	if (_isTargetReached) {
-		my_skill_invoke(_self, _self.x, _self.y, global.LAYERS_INSTANCES, _skill_obj, _self.my_current_direction)
+		
+		var _aim_angle = getAngleTowardsTarget(self.x, self.y, _target.x, _target.y);
+		
+		my_skill_invoke_3(self, self.x, self.y, global.LAYERS_INSTANCES, _skill_obj, 
+			my_calculate_direction_enum(_aim_angle), _aim_angle, undefined)
+		
+		
+		//my_skill_invoke(_self, _self.x, _self.y, global.LAYERS_INSTANCES, _skill_obj, _self.my_current_direction)
 	}
 }
 
+function getAngleTowardsTarget(_obj_x, _obj_y, _target_x, _target_y) {
+    // Oblicz kąt z pozycji obiektu do celu
+    var angle = point_direction(_obj_x, _obj_y, _target_x, _target_y);
 
-function getDirectionTowardsTarget(_obj_x, _obj_y, _target_x, _target_y) {
-    // Oblicz różnicę w pozycji między obiektem a celem
-    var dx = _target_x - _obj_x;
-    var dy = _target_y - _obj_y;
-
-    // Normalizuj różnice do wartości -1, 0, 1
-    var norm_dx = sign(dx);
-    var norm_dy = sign(dy);
-
-    // Określ kierunek na podstawie normalizowanych wartości
-    if (norm_dy == -1) {
-        if (norm_dx == -1) {
-            return MY_Direction.UP_LEFT;
-        } else if (norm_dx == 1) {
-            return MY_Direction.UP_RIGHT;
-        } else {
-            return MY_Direction.UP;
-        }
-    } else if (norm_dy == 1) {
-        if (norm_dx == -1) {
-            return MY_Direction.DOWN_LEFT;
-        } else if (norm_dx == 1) {
-            return MY_Direction.DOWN_RIGHT;
-        } else {
-            return MY_Direction.DOWN;
-        }
-    } else {
-        if (norm_dx == -1) {
-            return MY_Direction.LEFT;
-        } else if (norm_dx == 1) {
-            return MY_Direction.RIGHT;
-        }
-    }
-
-    // W przypadku gdy obiekt i cel są w tej samej pozycji
-    return -1; // Możesz zwrócić dowolną wartość domyślną lub -1 jako oznaczenie braku ruchu
+    // Zwróć obliczony kąt
+    return angle;
 }
+
+
+//function getDirectionTowardsTarget(_obj_x, _obj_y, _target_x, _target_y) {
+//    // Oblicz różnicę w pozycji między obiektem a celem
+//    var dx = _target_x - _obj_x;
+//    var dy = _target_y - _obj_y;
+
+//    // Normalizuj różnice do wartości -1, 0, 1
+//    var norm_dx = sign(dx);
+//    var norm_dy = sign(dy);
+
+//    // Określ kierunek na podstawie normalizowanych wartości
+//    if (norm_dy == -1) {
+//        if (norm_dx == -1) {
+//            return MY_Direction.UP_LEFT;
+//        } else if (norm_dx == 1) {
+//            return MY_Direction.UP_RIGHT;
+//        } else {
+//            return MY_Direction.UP;
+//        }
+//    } else if (norm_dy == 1) {
+//        if (norm_dx == -1) {
+//            return MY_Direction.DOWN_LEFT;
+//        } else if (norm_dx == 1) {
+//            return MY_Direction.DOWN_RIGHT;
+//        } else {
+//            return MY_Direction.DOWN;
+//        }
+//    } else {
+//        if (norm_dx == -1) {
+//            return MY_Direction.LEFT;
+//        } else if (norm_dx == 1) {
+//            return MY_Direction.RIGHT;
+//        }
+//    }
+
+//    // W przypadku gdy obiekt i cel są w tej samej pozycji
+//    return -1; // Możesz zwrócić dowolną wartość domyślną lub -1 jako oznaczenie braku ruchu
+//}

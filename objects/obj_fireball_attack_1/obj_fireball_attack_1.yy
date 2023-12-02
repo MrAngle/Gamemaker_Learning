@@ -35,8 +35,8 @@
   "properties": [],
   "solid": false,
   "spriteId": {
-    "name": "sprite_fireball_attack_1",
-    "path": "sprites/sprite_fireball_attack_1/sprite_fireball_attack_1.yy",
+    "name": "sprite_fireball_attack_2",
+    "path": "sprites/sprite_fireball_attack_2/sprite_fireball_attack_2.yy",
   },
   "spriteMaskId": null,
   "visible": true,

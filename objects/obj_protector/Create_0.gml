@@ -15,30 +15,20 @@ function custom_sprites_init(_instance) {
 }
 my_object_specific_sprites_init_function = custom_sprites_init;
 
-targetType = obj_enemy_parent;
-targetEnemyRef = undefined;
-targetDistanceRadius = 2000;
-var _sprite_index = asset_get_index(global.SPRITE_SWORD_ATTACK_1);
-
-// Uzyskaj szerokość i wysokość sprite'a
-var _sprite_width = sprite_get_width(_sprite_index);
-var _sprite_height = sprite_get_height(_sprite_index);
-
-var _obj_width = sprite_get_width(sprite_index);
-var _obj_height = sprite_get_height(sprite_index);
-
-stopDistance = (_sprite_width + _sprite_height + _obj_width + _obj_height ) / 8;
-reachedTarget = false;
-alarm[1] = global.MY_ROOM_SPEED;
+attackInterval = 0.2 * global.MY_ROOM_SPEED;
+attackIntervalCounter = attackInterval;
 
 event_inherited();
 
 moveStrategy = function(_self) {
-	MOVE_STRATEGY_goToNearestInRadius_PER_FRAME(_self, targetType, targetDistanceRadius, stopDistance);
+	MOVE_STRATEGY_goToNearestInRadius_PER_FRAME(_self, _self.targetType, _self.targetDistanceRadius, _self.stopDistance);
 }
 
 attackStrategy = function(_self) {
-	ATTACK_STRATEGY_attackTargetWithSkill_PER_FRAME(_self, _self.reachedTarget, obj_sword_attack_1);
+	if(attackIntervalCounter <= 0) {
+		attackIntervalCounter = attackInterval;
+		ATTACK_STRATEGY_attackTargetWithSkill_PER_FRAME(_self, _self.targetEnemyRef, _self.reachedTarget, obj_sword_attack_1);
+	}
+	attackIntervalCounter -= 1;
 }
-
 my_set_max_health(self, 500);
