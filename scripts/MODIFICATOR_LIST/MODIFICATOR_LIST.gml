@@ -36,7 +36,7 @@ function MODIFICATOR_FIRE_DOT_1_returnMODIFICATOR(_targetObject, _sourceObject) 
 	var _modificator = DOTModifier(
 		_targetObject,             // Obiekt, który zostanie zmodyfikowany.
 		_sourceObject,             // Obiekt źródłowy wywołujący modyfikację.
-		sprite_fireball_dot_2,             // Sprite, który ma być wyświetlany jako ikona efektu.
+		sprite_fireball_dot_1,             // Sprite, który ma być wyświetlany jako ikona efektu.
 		MY_SKILL_LIST.FIREBALL_1,    // Enum reprezentujący umiejętność lub efekt.
 		5,								// Cas trwania efektu
 		global.MY_EMPTY_FUNCTION_WITH_2_PARAMS,      // Funkcja, która zostanie wywołana (może być pusta).

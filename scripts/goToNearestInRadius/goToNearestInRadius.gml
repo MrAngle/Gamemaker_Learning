@@ -26,7 +26,20 @@ function MOVE_STRATEGY_goToNearestInRadius_PER_FRAME(_obj, _target_obj, _radius_
 		{
 		    if (distance_to_enemy > _stopDistance_real)
 		    {
-		        // Oblicz kierunek do najbliższego wroga
+				//if (is_path_clear(_obj, _obj.targetEnemyRef))
+	            //{
+	            //    var dir = point_direction(x, y, _obj.targetEnemyRef.x, _obj.targetEnemyRef.y);
+	            //    speed = my_get_speed(_obj);
+	            //    direction = dir;
+	            //    _obj.reachedTarget = false;
+	            //}
+	            //else
+	            //{
+	            //    // Znajdź alternatywną ścieżkę lub zmień kierunek
+	            //    find_alternative_path(_obj, _obj.targetEnemyRef);
+	            //}
+				
+		         //Oblicz kierunek do najbliższego wroga
 		        var dir = point_direction(x, y, _obj.targetEnemyRef.x, _obj.targetEnemyRef.y);
 
 		        // Ustaw prędkość i kierunek ruchu postaci
@@ -51,6 +64,20 @@ function MOVE_STRATEGY_goToNearestInRadius_PER_FRAME(_obj, _target_obj, _radius_
 	}
 
 }
+
+
+//function is_path_clear(obj, target) {
+//    var start_x = obj.x;
+//    var start_y = obj.y;
+//    var end_x = target.x;
+//    var end_y = target.y;
+
+//    // Sprawdź kolizje na linii między obiektem a celem
+//    var collision = collision_line(start_x, start_y, end_x, end_y, abst_collision_super_parent.mask_index, true, false);
+
+//    // Jeśli nie ma kolizji, ścieżka jest wolna
+//    return (collision == noone);
+//}
 
 
 function ATTACK_STRATEGY_attackTargetWithSkill_PER_FRAME(_self, _target, _isTargetReached, _skill_obj) {

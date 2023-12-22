@@ -1,4 +1,4 @@
-var speed_x = x - xprevious;
-var speed_y = y - yprevious;
+var _speed_x = x - xprevious;
+var _speed_y = y - yprevious;
 
-setSpriteAndMirror(self, speed_x, speed_y);
+setSpriteAndMirror(self, _speed_x, _speed_y);

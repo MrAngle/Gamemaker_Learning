@@ -14,8 +14,8 @@
     "path": "folders/Objects/Game/Colony/Protector.yy",
   },
   "parentObjectId": {
-    "name": "abst_ally",
-    "path": "objects/abst_ally/abst_ally.yy",
+    "name": "abstr_ally_npc",
+    "path": "objects/abstr_ally_npc/abstr_ally_npc.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,

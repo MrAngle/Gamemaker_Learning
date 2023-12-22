@@ -2,7 +2,9 @@
   "resourceType": "GMObject",
   "resourceVersion": "1.0",
   "name": "abst_colony",
-  "eventList": [],
+  "eventList": [
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
+  ],
   "managed": true,
   "overriddenProperties": [],
   "parent": {
@@ -10,8 +12,8 @@
     "path": "folders/Objects/Game/Colony.yy",
   },
   "parentObjectId": {
-    "name": "abst_destroyable_collision",
-    "path": "objects/abst_destroyable_collision/abst_destroyable_collision.yy",
+    "name": "abstr_ally",
+    "path": "objects/abstr_ally/abstr_ally.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,
@@ -28,10 +30,7 @@
   "physicsStartAwake": true,
   "properties": [],
   "solid": false,
-  "spriteId": {
-    "name": "Spr_Chest_02",
-    "path": "sprites/Spr_Chest_02/Spr_Chest_02.yy",
-  },
+  "spriteId": null,
   "spriteMaskId": null,
   "visible": true,
 }

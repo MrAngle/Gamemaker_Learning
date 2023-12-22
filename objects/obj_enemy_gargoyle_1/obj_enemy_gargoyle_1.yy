@@ -3,7 +3,6 @@
   "resourceVersion": "1.0",
   "name": "obj_enemy_gargoyle_1",
   "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
   ],
   "managed": true,
@@ -13,8 +12,8 @@
     "path": "folders/Objects/Game/Enemies.yy",
   },
   "parentObjectId": {
-    "name": "obj_enemy_parent",
-    "path": "objects/obj_enemy_parent/obj_enemy_parent.yy",
+    "name": "abstr_enemy_npc",
+    "path": "objects/abstr_enemy_npc/abstr_enemy_npc.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,

@@ -15,8 +15,7 @@ function custom_sprites_init(_instance) {
 }
 my_object_specific_sprites_init_function = custom_sprites_init;
 
-attackInterval = 0.2 * global.MY_ROOM_SPEED;
-attackIntervalCounter = attackInterval;
+
 
 event_inherited();
 
@@ -24,6 +23,9 @@ moveStrategy = function(_self) {
 	MOVE_STRATEGY_goToNearestInRadius_PER_FRAME(_self, _self.targetType, _self.targetDistanceRadius, _self.stopDistance);
 }
 
+
+attackInterval = 0.2 * global.MY_ROOM_SPEED;
+attackIntervalCounter = attackInterval;
 attackStrategy = function(_self) {
 	if(attackIntervalCounter <= 0) {
 		attackIntervalCounter = attackInterval;
