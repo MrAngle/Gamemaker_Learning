@@ -1,3 +1,3 @@
 event_inherited();
 
-npcCreate();
+npcCreate(false);

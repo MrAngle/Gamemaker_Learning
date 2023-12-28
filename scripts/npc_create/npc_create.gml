@@ -1,14 +1,27 @@
 
 
-function npcCreate() {
+function npcCreate(_isEnemy) {
 	with(self) {
-		targetType = abst_enemy_parent;
-		targetEnemyRef = undefined;
-		targetDistanceRadius = 2000;
+		
+		var _targetFamilyType;
+		if(_isEnemy) {
+			_targetFamilyType = abstr_ally;
+		} else {
+			_targetFamilyType = abst_enemy_parent;
+		}
+		targetingObj = create_targetingObject_returnObject(undefined, _targetFamilyType, 2000);
+		pathFinder = create_path_finder_returnObject(self);
+		
+		//targetType = abst_enemy_parent;
+		//targetEnemyRef = undefined;
+		//targetDistanceRadius = 2000;
 		stopDistance = 50;
 		reachedTarget = false;
+		
+
 
 		alarm[1] = 1;
+		alarm[2] = random_range(3, 4) * global.MY_ROOM_SPEED;
 
 		moveStrategy = function(_self) {
 	
@@ -35,8 +48,8 @@ function npcCreate() {
 
 				stopDistance = (_sprite_width + _sprite_height + _obj_width + _obj_height ) / 8;
 	
-				var _collision_width = sprite_get_width(targetEnemyRef.sprite_index);
-				var _collision_height = sprite_get_height(targetEnemyRef.sprite_index);
+				var _collision_width = sprite_get_width(_self.targetingObj.priv_currentTargetRef.sprite_index);
+				var _collision_height = sprite_get_height(_self.targetingObj.priv_currentTargetRef.sprite_index);
 				var _collision_offset = ( _collision_width + _collision_height ) / 4; // Średnia z połowy szerokości i wysokości
 
 				stopDistance += _collision_offset;

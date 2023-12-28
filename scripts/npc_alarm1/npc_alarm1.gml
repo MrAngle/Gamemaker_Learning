@@ -3,7 +3,7 @@
 function npc_alarm1(_self) 
 {
 	with(_self) {
-		if(targetEnemyRef != undefined && instance_exists(targetEnemyRef)) {
+		if(_self.targetingObj.priv_currentTargetRef != undefined && instance_exists(_self.targetingObj.priv_currentTargetRef)) {
 			self.stopDistance = calculateStopDistance(self);
 		}
 		alarm[1] = global.MY_ROOM_SPEED / 2

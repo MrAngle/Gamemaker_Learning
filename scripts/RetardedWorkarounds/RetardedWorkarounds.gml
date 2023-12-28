@@ -42,3 +42,10 @@ function my_copy_parameters_to_from_struct(_to_struct, _from_struct)
 	    }
 	}
 }
+
+function isNull(_obj) {
+	if (_obj == noone || _obj == undefined) {
+		return true;
+	}
+	return false;
+}

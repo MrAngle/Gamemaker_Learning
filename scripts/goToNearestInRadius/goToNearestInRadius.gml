@@ -1,5 +1,16 @@
 // // W wersji v2.3.0 zmieniono zasoby skryptu. Więcej informacji można znaleźć pod adresem
 // // https://help.yoyogames.com/hc/en-us/articles/360005277377
+
+
+function MOVE_STRATEGY_SELF_goToNearestInRadius_PER_FRAME(_self) {
+	MOVE_STRATEGY_goToNearestInRadius_PER_FRAME(
+	_self,
+	_self.targetingObj.priv_targetType,
+	_self.targetingObj.priv_targetDistanceRadius,
+	_self.stopDistance);
+}
+
+
 function MOVE_STRATEGY_goToNearestInRadius_PER_FRAME(_obj, _target_obj, _radius_real, _stopDistance_real) 
 {
 	with(_obj) {
@@ -7,45 +18,54 @@ function MOVE_STRATEGY_goToNearestInRadius_PER_FRAME(_obj, _target_obj, _radius_
 		var detection_radius = _radius_real;
 		
 
+		_obj.speed = my_get_speed(_obj);
+
 
 		// Znajdź najbliższego wroga
 		var nearest_enemy = instance_nearest(x, y, _target_obj);
-		_obj.targetEnemyRef = nearest_enemy;
+		setCurrentTarget(_obj, nearest_enemy);
+		
+		
+		if(_obj.pathFinder.foundPath) {
+			return;
+		}
+		
+		//_obj.targetEnemyRef = nearest_enemy;
 
 		// Sprawdź, czy jakiś wróg jest w zasięgu
-		if (_obj.targetEnemyRef == noone || _obj.targetEnemyRef == undefined)
+		if (isNull(_obj.targetingObj.priv_currentTargetRef))
 		{
 			_obj.reachedTarget = false;
 			speed = 0;
 			return;
 		}
 		
-		var distance_to_enemy = point_distance(x, y, _obj.targetEnemyRef.x, _obj.targetEnemyRef.y);
+		var distance_to_enemy = point_distance(
+			x, y, 
+			_obj.targetingObj.priv_currentTargetRef.x, 
+			_obj.targetingObj.priv_currentTargetRef.y);
 
 		if (distance_to_enemy <= detection_radius)
 		{
 		    if (distance_to_enemy > _stopDistance_real)
 		    {
-				//if (is_path_clear(_obj, _obj.targetEnemyRef))
-	            //{
-	            //    var dir = point_direction(x, y, _obj.targetEnemyRef.x, _obj.targetEnemyRef.y);
-	            //    speed = my_get_speed(_obj);
-	            //    direction = dir;
-	            //    _obj.reachedTarget = false;
-	            //}
-	            //else
-	            //{
-	            //    // Znajdź alternatywną ścieżkę lub zmień kierunek
-	            //    find_alternative_path(_obj, _obj.targetEnemyRef);
-	            //}
+				
+				var foundPath = MY_find_path_returnTrueIfFound(_obj);
+				
+				if(foundPath) {
+					show_debug_message("znalazlem");
+				} else {
+					
+				}
+				
 				
 		         //Oblicz kierunek do najbliższego wroga
-		        var dir = point_direction(x, y, _obj.targetEnemyRef.x, _obj.targetEnemyRef.y);
+		        //var dir = point_direction(x, y, _obj.targetEnemyRef.x, _obj.targetEnemyRef.y);
 
-		        // Ustaw prędkość i kierunek ruchu postaci
-		        speed = my_get_speed(_obj); // Możesz dostosować tę wartość
-		        direction = dir;
-				_obj.reachedTarget = false;
+		        //// Ustaw prędkość i kierunek ruchu postaci
+		        //speed = my_get_speed(_obj); // Możesz dostosować tę wartość
+		        //direction = dir;
+				//_obj.reachedTarget = false;
 		    }
 		    else
 		    {
@@ -78,6 +98,10 @@ function MOVE_STRATEGY_goToNearestInRadius_PER_FRAME(_obj, _target_obj, _radius_
 //    // Jeśli nie ma kolizji, ścieżka jest wolna
 //    return (collision == noone);
 //}
+
+function ATTACK_STRATEGY_SELF_attackTargetWithSkill_PER_FRAME(_self, _skill_obj) {
+			ATTACK_STRATEGY_attackTargetWithSkill_PER_FRAME(_self, _self.targetingObj.priv_currentTargetRef, _self.reachedTarget, _skill_obj);
+}
 
 
 function ATTACK_STRATEGY_attackTargetWithSkill_PER_FRAME(_self, _target, _isTargetReached, _skill_obj) {

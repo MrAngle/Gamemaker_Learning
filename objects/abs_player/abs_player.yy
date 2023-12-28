@@ -10,8 +10,8 @@
     "path": "folders/Objects/Game/Player.yy",
   },
   "parentObjectId": {
-    "name": "abst_destroyable_collision_movable",
-    "path": "objects/abst_destroyable_collision_movable/abst_destroyable_collision_movable.yy",
+    "name": "abstr_ally",
+    "path": "objects/abstr_ally/abstr_ally.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,
