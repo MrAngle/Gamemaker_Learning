@@ -1,11 +1,14 @@
 // // W wersji v2.3.0 zmieniono zasoby skryptu. Więcej informacji można znaleźć pod adresem
 // // https://help.yoyogames.com/hc/en-us/articles/360005277377
 global.MY_GRID_MAP_PATH = mp_grid_create(0, 0, 32, 32, 32, 32);
+global.MY_GRID_MAP_PATH_CELL_SIZE = 32;
 
 function create_grid_map_path() {
 	show_debug_message("Tworze MY_GRID_MAP_PATH");
-	global.MY_GRID_MAP_PATH = mp_grid_create(0, 0, room_width, room_height, 32, 32);
+	global.MY_GRID_MAP_PATH = mp_grid_create(0, 0, room_width, room_height, global.MY_GRID_MAP_PATH_CELL_SIZE, global.MY_GRID_MAP_PATH_CELL_SIZE);
 	add_to_grid_map_path(obj_editor_wall);
+	//add_to_grid_map_path(abst_destroyable_obstacle);
+	//add_to_grid_map_path(obj_editor_wall);
 }
 
 function add_to_grid_map_path(_objToAdd) {

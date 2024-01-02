@@ -1,1 +1,1 @@
-reachedTarget = true;
+//self.pathFinder.reachedTarget = true;

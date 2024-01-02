@@ -3,7 +3,7 @@
   "resourceVersion": "1.0",
   "name": "obj_barrel_big",
   "eventList": [
-    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":1,"isDnD":true,},
+    {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":1,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":{"name":"abst_damageable","path":"objects/abst_damageable/abst_damageable.yy",},"eventNum":0,"eventType":4,"isDnD":false,},
     {"resourceType":"GMEvent","resourceVersion":"1.0","name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,},
   ],
@@ -14,8 +14,8 @@
     "path": "folders/Objects/Level.yy",
   },
   "parentObjectId": {
-    "name": "abst_destroyable_collision",
-    "path": "objects/abst_destroyable_collision/abst_destroyable_collision.yy",
+    "name": "abst_destroyable_obstacle",
+    "path": "objects/abst_destroyable_obstacle/abst_destroyable_obstacle.yy",
   },
   "persistent": false,
   "physicsAngularDamping": 0.1,

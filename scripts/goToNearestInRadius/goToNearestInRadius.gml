@@ -30,12 +30,13 @@ function MOVE_STRATEGY_goToNearestInRadius_PER_FRAME(_obj, _target_obj, _radius_
 			return;
 		}
 		
+		
 		//_obj.targetEnemyRef = nearest_enemy;
 
 		// Sprawdź, czy jakiś wróg jest w zasięgu
 		if (isNull(_obj.targetingObj.priv_currentTargetRef))
 		{
-			_obj.reachedTarget = false;
+			_obj.pathFinder.reachedTarget = false;
 			speed = 0;
 			return;
 		}
@@ -57,6 +58,7 @@ function MOVE_STRATEGY_goToNearestInRadius_PER_FRAME(_obj, _target_obj, _radius_
 				} else {
 					
 				}
+				_obj.pathFinder.reachedTarget = false;
 				
 				
 		         //Oblicz kierunek do najbliższego wroga
@@ -71,14 +73,14 @@ function MOVE_STRATEGY_goToNearestInRadius_PER_FRAME(_obj, _target_obj, _radius_
 		    {
 		        // Zatrzymaj postać, jeśli jest wystarczająco blisko wroga
 		        speed = 0;
-				_obj.reachedTarget = true;
+				_obj.pathFinder.reachedTarget = true;
 		    }
 		}
 		else
 		{
 		    // Zatrzymaj postać, jeśli nie ma wrogów w pobliżu
 		    speed = 0;
-			_obj.reachedTarget = false;
+			_obj.pathFinder.reachedTarget = false;
 		}
 
 	}
@@ -100,7 +102,11 @@ function MOVE_STRATEGY_goToNearestInRadius_PER_FRAME(_obj, _target_obj, _radius_
 //}
 
 function ATTACK_STRATEGY_SELF_attackTargetWithSkill_PER_FRAME(_self, _skill_obj) {
-			ATTACK_STRATEGY_attackTargetWithSkill_PER_FRAME(_self, _self.targetingObj.priv_currentTargetRef, _self.reachedTarget, _skill_obj);
+			ATTACK_STRATEGY_attackTargetWithSkill_PER_FRAME(
+			_self, 
+			_self.targetingObj.priv_currentTargetRef, 
+			_self.pathFinder.reachedTarget, 
+			_skill_obj);
 }
 
 

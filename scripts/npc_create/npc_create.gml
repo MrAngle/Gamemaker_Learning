@@ -16,7 +16,7 @@ function npcCreate(_isEnemy) {
 		//targetEnemyRef = undefined;
 		//targetDistanceRadius = 2000;
 		stopDistance = 50;
-		reachedTarget = false;
+		//reachedTarget = false;
 		
 
 

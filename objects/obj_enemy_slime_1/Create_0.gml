@@ -31,7 +31,6 @@ attackStrategy = function(_self) {
 	if(attackIntervalCounter <= 0) {
 		attackIntervalCounter = attackInterval;
 		ATTACK_STRATEGY_SELF_attackTargetWithSkill_PER_FRAME(_self, obj_sword_attack_1);
-		//ATTACK_STRATEGY_attackTargetWithSkill_PER_FRAME(_self, _self.targetingObj.priv_currentTargetRef, _self.reachedTarget, obj_sword_attack_1);
 	}
 	attackIntervalCounter -= 1;
 }
