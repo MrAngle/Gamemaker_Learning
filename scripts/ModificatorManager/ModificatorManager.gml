@@ -9,12 +9,12 @@ function processAllModifiersPerFrame(_obj) {
 	
 	for (var i = 0; i < array_length(_allModifiers); i++) {
 	    var _currentModifiersMap = _allModifiers[i];
-	    private_processModifiersPerFrame(_currentModifiersMap);
+	    private_processModifiersPerFrame(_obj, _currentModifiersMap);
 	}
 }
 
 // PRIVATE
-function private_processModifiersPerFrame(_modifiers) {
+function private_processModifiersPerFrame(_obj, _modifiers) {
 
 	var _shouldDelete = false;
 	for (var k = ds_map_find_first(_modifiers); !is_undefined(k); k = ds_map_find_next(_modifiers, k)) {
@@ -41,6 +41,7 @@ function private_processModifiersPerFrame(_modifiers) {
 		        processAuraModifiersPerFrame(_modifier_class, _modifiers);
 		        break;
 		    default:
+				show_debug_message("typ to: " + myModifierClassType + " dla: " + _modifier_class)
 		        break;
 		}
 		
@@ -50,8 +51,13 @@ function private_processModifiersPerFrame(_modifiers) {
 			} else {
 				removeStack(_modifier_class);
 			}
+			calculateAfterRemove(_obj);
 		}
 	}
+}
+
+function calculateAfterRemove(_obj) {
+	my_calculate_speed(_obj);
 }
 
 function removeStack(_modifier_class) {
@@ -143,8 +149,10 @@ function add_speed_modifier(_modifier_class) {
 		ds_list_add(global.PLAYER_MODIFICATORS_OBJECTS_LIST, _modifier_obj);
 	}
 	
-    _target.my_priv_speed_modifiers[? _modifier_class[global.MODIFICATOR_SKILL_NAME_ID_KEY]] = 
-		_modifier_class;
+	PUBLIC_add_speed_modifier(_target, _modifier_class);
+	
+    //_target.my_priv_speed_modifiers[? _modifier_class[global.MODIFICATOR_SKILL_NAME_ID_KEY]] = 
+	//	_modifier_class;
 
 }
 

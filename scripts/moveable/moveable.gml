@@ -19,6 +19,7 @@ function my_INHERITENCE_movable(_obj)
 	}
 
 	_initMoveable(_obj, _received_params);
+	my_calculate_speed(_obj);
 
 	// APPLY 
 	//my_start_move_moveable_obj(_obj); 
@@ -50,8 +51,9 @@ function my_assign_movable_global_param(_object_movable, _global_param_movable) 
 		_object_movable.my_current_direction = _global_param_movable.my_current_direction;
     if (variable_struct_exists(_global_param_movable, "my_priv_current_speed"))
         _object_movable.my_priv_current_speed = _global_param_movable.my_priv_current_speed;
-	if (variable_struct_exists(_global_param_movable, "my_priv_base_speed"))
-        _object_movable.my_priv_base_speed = _global_param_movable.my_priv_base_speed;
+	if (variable_struct_exists(_global_param_movable, "my_priv_base_speed")) {
+		my_set_base_speed(_object_movable, _global_param_movable.my_priv_base_speed);
+	}
 	if (variable_struct_exists(_global_param_movable, "my_priv_speed_modifiers")) {
 		_object_movable.my_priv_speed_modifiers = _global_param_movable.my_priv_speed_modifiers;
 	}
@@ -73,12 +75,18 @@ function my_CONSTRUCTOR_default_moveable_init(_instance) {
     _instance.my_trigger_direction_change = true;
     _instance.my_STATE_is_lock_direction = false;
 	_instance.my_priv_base_speed = 0; // base character speed
+	_instance.my_priv_current_speed = 0;
 	
     _instance.my_priv_speed_modifiers = ds_map_create();
 }
 
 function my_DESTRUCTOR_moveable_resources(_obj) {
 	ds_map_destroy(_obj.my_priv_speed_modifiers);
+}
+
+function my_set_base_speed(_obj, _value) {
+	_obj.my_priv_base_speed = _value;
+	_obj.my_priv_current_speed = _value;
 }
 
 function my_get_direction(_obj)
@@ -98,6 +106,10 @@ function my_set_direction(_obj, _value)
 
 
 function my_get_speed(_obj) {
+    return _obj.my_priv_current_speed;
+}
+
+function my_calculate_speed(_obj) {
     var _current_speed = _obj.my_priv_base_speed;
 	var keys = ds_map_keys_to_array(_obj.my_priv_speed_modifiers);
     
@@ -109,8 +121,11 @@ function my_get_speed(_obj) {
 	// musisz dodac sprawdzanie modyfikatora
     
     //ds_list_destroy(keys);  // pamiętaj o zwolnieniu zasobów!
-    return _current_speed;
+	_obj.my_priv_current_speed = _current_speed;
+	_obj.path_speed = _obj.my_priv_current_speed;
+    return _obj.my_priv_current_speed;
 }
+
 
 
 function my_is_moveable_object(_obj)
@@ -121,6 +136,14 @@ function my_is_moveable_object(_obj)
 
 function get_speed_modifier(_obj) {
     return _obj.my_priv_speed_modifiers;
+}
+
+// PUBLIC
+function PUBLIC_add_speed_modifier(_obj, _modifier_class) {
+	_obj.my_priv_speed_modifiers[? _modifier_class[global.MODIFICATOR_SKILL_NAME_ID_KEY]] = 
+		_modifier_class;
+    _obj.my_priv_current_speed = my_calculate_speed(_obj);
+    _obj.path_speed = _obj.my_priv_current_speed;
 }
 
 function my_is_movable_type_object(_object)

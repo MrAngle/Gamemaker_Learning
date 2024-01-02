@@ -16,6 +16,7 @@ function create_path_finder_returnObject(_self) {
 	var pathFinder = {
 		path: path_add(),
 		foundPath: false,
+		reachedTarget: false,
 		destinationX: undefined,
 		destinationY: undefined
 	}
@@ -50,8 +51,8 @@ function FORCE_TO_UPDATE_PATH(_self) {
 		return;
 	}
 	
-	if(_self.targetingObj.priv_currentTargetRef.x != _self.pathFinder.destinationX &&
-		_self.targetingObj.priv_currentTargetRef.y != _self.pathFinder.destinationY) {
+	//if(_self.targetingObj.priv_currentTargetRef.x != _self.pathFinder.destinationX &&
+	//	_self.targetingObj.priv_currentTargetRef.y != _self.pathFinder.destinationY) {
 		_self.pathFinder.foundPath = false;
-	}
+	//}
 }

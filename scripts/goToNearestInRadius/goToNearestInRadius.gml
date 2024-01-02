@@ -18,7 +18,7 @@ function MOVE_STRATEGY_goToNearestInRadius_PER_FRAME(_obj, _target_obj, _radius_
 		var detection_radius = _radius_real;
 		
 
-		_obj.speed = my_get_speed(_obj);
+		//_obj.speed = my_get_speed(_obj);
 
 
 		// Znajdź najbliższego wroga
